@@ -27,7 +27,7 @@ export default function Footer() {
             <ul className="flex flex-wrap gap-x-6 gap-y-3 text-sm font-medium text-muted">
               {navigation.map(({ label, href }) => (
                 <li key={label}>
-                  <a href={href} className="transition-colors hover:text-foreground">
+                  <a href={href} className="inline-flex min-h-11 items-center transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
                     {label}
                   </a>
                 </li>
