@@ -1,4 +1,7 @@
 import Header from "@/components/layout/Header";
+import Companies from "@/components/home/Companies";
+import Employees from "@/components/home/Employees";
+import Features from "@/components/home/Features";
 
 export default function Home() {
   return (
@@ -66,6 +69,10 @@ export default function Home() {
           </dl>
         </div>
       </section>
+
+      <Features />
+      <Companies />
+      <Employees />
     </main>
   );
 }
