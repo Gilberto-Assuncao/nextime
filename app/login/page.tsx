@@ -19,7 +19,8 @@ export default function LoginPage() {
           <label className="flex min-h-11 cursor-pointer items-center gap-3 text-[#D1D5DB]"><input type="checkbox" name="remember" className="h-5 w-5 rounded border-white/20 accent-[#22C55E]" />Remember me</label>
           <Link href="/forgot-password" className="inline-flex min-h-11 items-center font-medium text-[#22C55E] hover:text-[#16A34A] focus-visible:outline-2 focus-visible:outline-[#22C55E]">Forgot password?</Link>
         </div>
-        <button type="submit" className="min-h-12 w-full rounded-lg bg-[#22C55E] px-5 py-3 font-semibold text-[#07110B] transition hover:bg-[#16A34A] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#22C55E]">Sign In</button>
+        {/* TODO: Protect dashboard routes when backend authentication is integrated. */}
+        <Link href="/dashboard" className="flex min-h-12 w-full items-center justify-center rounded-lg bg-[#22C55E] px-5 py-3 font-semibold text-[#07110B] transition hover:bg-[#16A34A] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#22C55E]">Sign In</Link>
         <AuthDivider />
         <SocialAuthButtons />
       </AuthCard>
