@@ -36,7 +36,7 @@ export default function Employees() {
               </li>
             ))}
           </ul>
-          <a href="#" className="mt-8 inline-flex rounded-lg border border-primary px-6 py-3 font-semibold text-primary transition-colors hover:bg-primary hover:text-background-deep">Start Free</a>
+          <a href="/register" className="mt-8 inline-flex rounded-lg border border-primary px-6 py-3 font-semibold text-primary transition-colors hover:bg-primary hover:text-background-deep">Start Free</a>
         </div>
       </div>
     </section>

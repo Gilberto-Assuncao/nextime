@@ -24,7 +24,7 @@ export default function FinalCTA() {
           </p>
           <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
             <a
-              href="#"
+              href="/register"
               className="inline-flex justify-center rounded-lg bg-primary px-6 py-3 font-semibold text-background-deep transition-colors hover:bg-primary-hover"
             >
               Start Free

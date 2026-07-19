@@ -31,13 +31,13 @@ export default function Header() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <a
-            href="#"
+            href="/login"
             className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
           >
             Entrar
           </a>
           <a
-            href="#"
+            href="/register"
             className="inline-flex min-h-11 items-center rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-background-deep transition-colors hover:bg-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
           >
             Começar<span className="hidden sm:inline"> gratuitamente</span>
@@ -64,8 +64,8 @@ export default function Header() {
               </ul>
             </nav>
             <div className="mt-3 grid grid-cols-2 gap-2 border-t border-border pt-3">
-              <a href="#" className="inline-flex min-h-11 items-center justify-center rounded-lg border border-border px-3 text-sm font-semibold text-foreground transition-colors hover:bg-background-deep focus-visible:outline-2 focus-visible:outline-primary">Entrar</a>
-              <a href="#" className="inline-flex min-h-11 items-center justify-center rounded-lg bg-primary px-3 text-sm font-semibold text-background-deep transition-colors hover:bg-primary-hover focus-visible:outline-2 focus-visible:outline-primary">Começar</a>
+              <a href="/login" className="inline-flex min-h-11 items-center justify-center rounded-lg border border-border px-3 text-sm font-semibold text-foreground transition-colors hover:bg-background-deep focus-visible:outline-2 focus-visible:outline-primary">Entrar</a>
+              <a href="/register" className="inline-flex min-h-11 items-center justify-center rounded-lg bg-primary px-3 text-sm font-semibold text-background-deep transition-colors hover:bg-primary-hover focus-visible:outline-2 focus-visible:outline-primary">Começar</a>
             </div>
           </div>
         </details>

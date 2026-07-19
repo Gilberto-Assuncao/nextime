@@ -28,7 +28,7 @@ export default function Home() {
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <a
-              href="#"
+              href="/register"
               className="inline-flex justify-center rounded-lg bg-primary px-6 py-3 font-semibold text-background-deep hover:bg-primary-hover"
             >
               Começar gratuitamente
