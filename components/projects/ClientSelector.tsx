@@ -1,0 +1,2 @@
+import type { Client } from "@/lib/types/project";
+export default function ClientSelector({ clients, className, defaultValue = "" }: { clients: Client[]; className: string; defaultValue?: string }) { return <select id="client" name="clientId" required defaultValue={defaultValue} className={className}><option value="" disabled>Select a client</option>{clients.map((client) => <option key={client.id} value={client.id}>{client.companyName}</option>)}</select>; }
