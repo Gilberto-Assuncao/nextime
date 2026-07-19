@@ -1,7 +1,10 @@
 import Header from "@/components/layout/Header";
 import Companies from "@/components/home/Companies";
 import Employees from "@/components/home/Employees";
+import FAQ from "@/components/home/FAQ";
 import Features from "@/components/home/Features";
+import FinalCTA from "@/components/home/FinalCTA";
+import Footer from "@/components/layout/Footer";
 
 export default function Home() {
   return (
@@ -73,6 +76,9 @@ export default function Home() {
       <Features />
       <Companies />
       <Employees />
+      <FAQ />
+      <FinalCTA />
+      <Footer />
     </main>
   );
 }

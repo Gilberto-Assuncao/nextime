@@ -15,14 +15,17 @@ export default function Header() {
           aria-label="Navegação principal"
           className="hidden items-center gap-8 text-sm font-medium text-muted md:flex"
         >
-          <a href="#" className="hover:text-foreground">
-            Recursos
+          <a href="#features" className="hover:text-foreground">
+            Features
           </a>
-          <a href="#" className="hover:text-foreground">
-            Empresas
+          <a href="#companies" className="hover:text-foreground">
+            Companies
           </a>
-          <a href="#" className="hover:text-foreground">
-            Preços
+          <a href="#employees" className="hover:text-foreground">
+            Employees
+          </a>
+          <a href="#faq" className="hover:text-foreground">
+            FAQ
           </a>
         </nav>
 

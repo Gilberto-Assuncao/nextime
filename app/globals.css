@@ -29,6 +29,10 @@ body {
   font-family: var(--font-poppins), sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 ::selection {
   background: var(--primary);
   color: var(--background-deep);
