@@ -15,7 +15,7 @@ export default function DashboardShell({ children }: { children: ReactNode }) {
       <Sidebar />
       <MobileSidebar open={mobileOpen} onClose={closeMobile} />
       <div className="min-h-screen lg:pl-64">
-        <Topbar onOpenMenu={() => setMobileOpen(true)} />
+        <Topbar onOpenMenu={() => setMobileOpen(true)} mobileMenuOpen={mobileOpen} />
         <main className="mx-auto w-full max-w-[1600px] p-4 sm:p-6 lg:p-8">{children}</main>
       </div>
     </div>

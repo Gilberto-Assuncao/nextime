@@ -1,6 +1,6 @@
-import type { Activity } from "@/lib/mock/dashboard";
+import type { TeamActivityItem } from "@/lib/types/dashboard";
 
-export default function TeamActivity({ activities }: { activities: Activity[] }) {
+export default function TeamActivity({ activities }: { activities: TeamActivityItem[] }) {
   return (
     <section aria-labelledby="team-activity-title" className="rounded-2xl border border-white/10 bg-[#161A34] p-5 sm:p-6">
       <h3 id="team-activity-title" className="text-lg font-semibold text-[#E5E7EB]">Team Activity</h3><p className="mt-1 text-xs text-[#9CA3AF]">Latest updates across your workspace</p>

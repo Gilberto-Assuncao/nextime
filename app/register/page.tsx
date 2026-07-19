@@ -7,7 +7,7 @@ import AuthLayout from "@/components/auth/AuthLayout";
 import PasswordInput from "@/components/auth/PasswordInput";
 import SocialAuthButtons from "@/components/auth/SocialAuthButtons";
 
-export const metadata: Metadata = { title: "Create Account — NEXTIME" };
+export const metadata: Metadata = { title: "Create account" };
 
 export default function RegisterPage() {
   return (

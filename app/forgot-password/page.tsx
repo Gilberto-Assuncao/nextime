@@ -4,7 +4,7 @@ import AuthCard from "@/components/auth/AuthCard";
 import AuthInput from "@/components/auth/AuthInput";
 import AuthLayout from "@/components/auth/AuthLayout";
 
-export const metadata: Metadata = { title: "Reset Password — NEXTIME" };
+export const metadata: Metadata = { title: "Forgot password" };
 
 export default function ForgotPasswordPage() {
   return (

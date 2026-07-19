@@ -7,7 +7,7 @@ import AuthLayout from "@/components/auth/AuthLayout";
 import PasswordInput from "@/components/auth/PasswordInput";
 import SocialAuthButtons from "@/components/auth/SocialAuthButtons";
 
-export const metadata: Metadata = { title: "Sign In — NEXTIME" };
+export const metadata: Metadata = { title: "Sign in" };
 
 export default function LoginPage() {
   return (

@@ -1,4 +1,4 @@
-import type { Kpi, KpiIcon } from "@/lib/mock/dashboard";
+import type { DashboardKpi, KpiIcon } from "@/lib/types/dashboard";
 
 const iconPaths: Record<KpiIcon, string> = {
   clock: "M12 7v5l3 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z",
@@ -13,7 +13,7 @@ const stateStyles = {
   attention: "text-amber-300",
 };
 
-export default function KpiCard({ kpi }: { kpi: Kpi }) {
+export default function KpiCard({ kpi }: { kpi: DashboardKpi }) {
   const stateLabel = kpi.state === "positive" ? "Positive trend" : kpi.state === "attention" ? "Attention" : "No change";
   return (
     <article className="group rounded-2xl border border-white/10 bg-[#161A34] p-5 transition duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:shadow-xl hover:shadow-black/20">

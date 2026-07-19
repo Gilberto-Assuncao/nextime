@@ -1,6 +1,6 @@
-import type { WeeklyHours } from "@/lib/mock/dashboard";
+import type { WeeklyHoursEntry } from "@/lib/types/dashboard";
 
-export default function WeeklyHoursChart({ data }: { data: WeeklyHours[] }) {
+export default function WeeklyHoursChart({ data }: { data: WeeklyHoursEntry[] }) {
   const max = Math.max(...data.map((item) => item.hours), 1);
   return (
     <section aria-labelledby="weekly-hours-title" className="rounded-2xl border border-white/10 bg-[#161A34] p-5 sm:p-6">

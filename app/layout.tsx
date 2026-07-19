@@ -9,7 +9,10 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "NEXTIME — Time Well Managed",
+  title: {
+    default: "NEXTIME — Time Well Managed",
+    template: "%s — NEXTIME",
+  },
   description: "Plataforma SaaS para controle de horas, equipes e projetos.",
 };
 

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import DashboardNav from "./DashboardNav";
+import { currentUser } from "@/lib/mock/current-user";
 
 export default function Sidebar() {
   return (
@@ -10,8 +11,8 @@ export default function Sidebar() {
       <DashboardNav />
       <div className="border-t border-white/10 p-4">
         <div className="flex items-center gap-3 rounded-xl bg-[#111827] p-3">
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#22C55E]/15 text-sm font-bold text-[#22C55E]">GA</span>
-          <div className="min-w-0 flex-1"><p className="truncate text-sm font-semibold text-[#E5E7EB]">Gilberto Assunção</p><p className="truncate text-xs text-[#9CA3AF]">Administrator</p></div>
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#22C55E]/15 text-sm font-bold text-[#22C55E]">{currentUser.initials}</span>
+          <div className="min-w-0 flex-1"><p className="truncate text-sm font-semibold text-[#E5E7EB]">{currentUser.name}</p><p className="truncate text-xs text-[#9CA3AF]">{currentUser.role}</p></div>
         </div>
         <button type="button" className="mt-2 flex min-h-11 w-full items-center justify-center rounded-lg text-sm font-medium text-[#9CA3AF] transition hover:bg-white/5 hover:text-[#E5E7EB] focus-visible:outline-2 focus-visible:outline-[#22C55E]">Sign Out</button>
       </div>

@@ -1,7 +1,7 @@
-import type { Timesheet } from "@/lib/mock/dashboard";
+import type { RecentTimesheet } from "@/lib/types/dashboard";
 import StatusBadge from "./StatusBadge";
 
-export default function RecentTimesheets({ timesheets }: { timesheets: Timesheet[] }) {
+export default function RecentTimesheets({ timesheets }: { timesheets: RecentTimesheet[] }) {
   return (
     <section aria-labelledby="recent-timesheets-title" className="overflow-hidden rounded-2xl border border-white/10 bg-[#161A34]">
       <div className="p-5 sm:p-6"><h3 id="recent-timesheets-title" className="text-lg font-semibold text-[#E5E7EB]">Recent Timesheets</h3><p className="mt-1 text-xs text-[#9CA3AF]">Latest submitted weekly records</p></div>
