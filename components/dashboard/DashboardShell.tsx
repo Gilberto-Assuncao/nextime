@@ -1,23 +1,11 @@
-"use client";
-
-import { useCallback, useState } from "react";
 import type { ReactNode } from "react";
-import MobileSidebar from "./MobileSidebar";
-import Sidebar from "./Sidebar";
-import Topbar from "./Topbar";
+import { AppShell } from "@/src/components/app-shell/AppShell";
+import { defaultAppNavigation, demoAppUser, demoCompanies, demoNotifications } from "@/src/components/app-shell/config";
 
 export default function DashboardShell({ children }: { children: ReactNode }) {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const closeMobile = useCallback(() => setMobileOpen(false), []);
-
   return (
-    <div className="min-h-screen overflow-x-hidden bg-[#111827] text-[#E5E7EB]">
-      <Sidebar />
-      <MobileSidebar open={mobileOpen} onClose={closeMobile} />
-      <div className="min-h-screen lg:pl-64">
-        <Topbar onOpenMenu={() => setMobileOpen(true)} mobileMenuOpen={mobileOpen} />
-        <main className="mx-auto w-full max-w-[1600px] p-4 sm:p-6 lg:p-8">{children}</main>
-      </div>
-    </div>
+    <AppShell navigation={defaultAppNavigation} breadcrumbs={[{ label: "Dashboard", href: "/dashboard" }]} companies={demoCompanies} currentCompany="demo-belnex" user={demoAppUser} notifications={demoNotifications}>
+      <div className="mx-auto w-full max-w-[1600px]">{children}</div>
+    </AppShell>
   );
 }

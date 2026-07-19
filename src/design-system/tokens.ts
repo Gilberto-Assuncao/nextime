@@ -1,0 +1,10 @@
+export const colors = { canvas: "#111827", surface: "#161A34", surfaceMuted: "#1F2937", border: "#374151", primary: "#22C55E", primaryHover: "#16A34A", text: "#E5E7EB", textMuted: "#9CA3AF", danger: "#F87171", warning: "#FBBF24", info: "#60A5FA", success: "#22C55E" } as const;
+export const spacing = { none: "0", xs: "0.25rem", sm: "0.5rem", md: "1rem", lg: "1.5rem", xl: "2rem", xxl: "3rem" } as const;
+export const radius = { sm: "0.5rem", md: "0.75rem", lg: "1rem", full: "9999px" } as const;
+export const typography = { family: "var(--font-poppins), Poppins, sans-serif", size: { xs: "0.75rem", sm: "0.875rem", md: "1rem", lg: "1.125rem", xl: "1.5rem" }, weight: { regular: 400, medium: 500, semibold: 600, bold: 700 } } as const;
+export const shadows = { sm: "0 1px 2px rgb(0 0 0 / 0.2)", md: "0 12px 32px rgb(0 0 0 / 0.24)", focus: "0 0 0 3px rgb(34 197 94 / 0.25)" } as const;
+export const animations = { easing: "cubic-bezier(0.4, 0, 0.2, 1)", fade: "opacity", slide: "transform, opacity" } as const;
+export const zIndex = { base: 0, dropdown: 20, sticky: 30, drawer: 40, modal: 50, toast: 60 } as const;
+export const breakpoints = { mobile: "20rem", tablet: "48rem", desktop: "64rem", wide: "90rem" } as const;
+export const durations = { fast: "150ms", normal: "250ms", slow: "400ms" } as const;
+export const componentClasses = { focus: "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#22C55E]", control: "min-h-11 rounded-lg border border-white/10 bg-[#111827] px-4 text-base text-[#E5E7EB] outline-none placeholder:text-[#6B7280] focus:border-[#22C55E] focus:ring-2 focus:ring-[#22C55E]/20 disabled:cursor-not-allowed disabled:opacity-50", surface: "rounded-2xl border border-white/10 bg-[#161A34]" } as const;

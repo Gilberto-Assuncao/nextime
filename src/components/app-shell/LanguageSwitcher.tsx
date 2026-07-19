@@ -1,0 +1,3 @@
+"use client";
+const languages=[{id:"en",label:"English"},{id:"pt",label:"Português"},{id:"fr",label:"Français"},{id:"nl",label:"Nederlands"},{id:"de",label:"Deutsch"}];
+export function LanguageSwitcher({ value="en", onChange }: { value?:string; onChange?:(language:string)=>void }) { return <div><label htmlFor="language-switcher" className="sr-only">Language</label><select id="language-switcher" value={value} onChange={event=>onChange?.(event.target.value)} className="min-h-11 rounded-lg border border-white/10 bg-[#111827] px-3 text-sm text-[#E5E7EB] outline-none focus:border-[#22C55E]">{languages.map(language=><option key={language.id} value={language.id}>{language.label}</option>)}</select></div>; }

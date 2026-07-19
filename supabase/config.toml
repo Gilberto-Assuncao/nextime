@@ -1,0 +1,20 @@
+project_id = "nextime"
+
+[api]
+enabled = true
+schemas = ["public", "graphql_public"]
+
+[db]
+major_version = 17
+
+[auth]
+enabled = true
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["http://localhost:3000/auth/callback"]
+
+[storage]
+enabled = true
+
+[seed]
+enabled = true
+sql_paths = ["./seed.sql"]

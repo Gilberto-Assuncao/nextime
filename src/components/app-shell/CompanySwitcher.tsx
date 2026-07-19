@@ -1,0 +1,3 @@
+"use client";
+import type { AppCompanyOption } from "./types";
+export function CompanySwitcher({ companies, value, onChange }: { companies:AppCompanyOption[]; value?:string; onChange?:(id:string)=>void }) { return <div><label htmlFor="company-switcher" className="sr-only">Current company</label><select id="company-switcher" value={value} onChange={event=>onChange?.(event.target.value)} className="min-h-11 max-w-44 rounded-lg border border-white/10 bg-[#111827] px-3 text-sm text-[#E5E7EB] outline-none focus:border-[#22C55E] focus:ring-2 focus:ring-[#22C55E]/20">{companies.map(company=><option key={company.id} value={company.id}>{company.name}</option>)}</select></div>; }
