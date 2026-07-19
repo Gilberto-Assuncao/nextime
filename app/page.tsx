@@ -1,106 +1,69 @@
+import Header from "@/components/layout/Header";
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
-      {/* Header */}
-      <header className="border-b border-slate-800">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-          <div>
-            <h1 className="text-3xl font-bold tracking-tight">
-              NEXT<span className="text-emerald-400">IME</span>
-            </h1>
-            <p className="text-sm text-slate-400">
-              Smart Time Management
-            </p>
-          </div>
+    <main className="min-h-screen bg-background text-foreground">
+      <Header />
 
-          <button className="rounded-xl bg-emerald-500 px-5 py-3 font-semibold text-black transition hover:bg-emerald-400">
-            Login
-          </button>
+      <section className="mx-auto grid max-w-[1280px] gap-14 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-20 lg:py-32">
+        <div>
+          <p className="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+            Time well managed
+          </p>
+          <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+            Controle seu tempo.
+            <br />
+            Organize seu trabalho.
+          </h1>
+          <p className="mt-6 max-w-2xl text-base leading-7 text-muted sm:text-lg sm:leading-8">
+            Registre horas, acompanhe projetos e gerencie equipes em uma
+            plataforma moderna para profissionais e empresas.
+          </p>
+
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <a
+              href="#"
+              className="inline-flex justify-center rounded-lg bg-primary px-6 py-3 font-semibold text-background-deep hover:bg-primary-hover"
+            >
+              Começar gratuitamente
+            </a>
+            <a
+              href="#"
+              className="inline-flex justify-center rounded-lg border border-border px-6 py-3 font-semibold text-foreground hover:bg-surface"
+            >
+              Ver demonstração
+            </a>
+          </div>
         </div>
-      </header>
 
-      {/* Hero */}
-      <section className="mx-auto flex min-h-[80vh] max-w-7xl items-center px-6">
-        <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
-
-          <div>
-            <span className="rounded-full border border-emerald-500/40 bg-emerald-500/10 px-4 py-2 text-sm text-emerald-300">
-              SaaS para Controle de Horas
-            </span>
-
-            <h2 className="mt-8 text-5xl font-bold leading-tight">
-              Controle de horas
-              <br />
-              <span className="text-emerald-400">
-                simples, rápido e inteligente.
-              </span>
-            </h2>
-
-            <p className="mt-8 max-w-xl text-lg leading-8 text-slate-400">
-              Desenvolvido para empresas de construção, manutenção,
-              eletricistas, instaladores e equipes de campo.
-            </p>
-
-            <div className="mt-10 flex gap-4">
-              <button className="rounded-xl bg-emerald-500 px-6 py-4 font-semibold text-black transition hover:bg-emerald-400">
-                Começar gratuitamente
-              </button>
-
-              <button className="rounded-xl border border-slate-700 px-6 py-4 transition hover:bg-slate-800">
-                Ver demonstração
-              </button>
-            </div>
+        <div className="rounded-2xl border border-border bg-surface p-6 shadow-2xl shadow-black/20 sm:p-8">
+          <div className="border-b border-border pb-6">
+            <p className="text-sm text-muted">Horas esta semana</p>
+            <p className="mt-2 text-4xl font-bold tracking-tight">38h 45min</p>
           </div>
 
-          {/* Dashboard Preview */}
-          <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8 shadow-2xl">
-
-            <div className="mb-8 flex items-center justify-between">
-              <div>
-                <p className="text-sm text-slate-400">
-                  Horas desta semana
-                </p>
-
-                <h3 className="text-5xl font-bold">
-                  38h
-                </h3>
-              </div>
-
-              <div className="rounded-2xl bg-emerald-500/10 px-5 py-3 text-emerald-400">
-                +12%
-              </div>
+          <dl className="mt-6 grid gap-4 sm:grid-cols-2">
+            <div className="rounded-xl border border-border bg-background-deep p-5 sm:col-span-2">
+              <dt className="text-sm text-muted">Projeto atual</dt>
+              <dd className="mt-2 text-lg font-semibold">
+                Residencial Bruxelas
+              </dd>
             </div>
-
-            <div className="space-y-4">
-
-              <div className="rounded-2xl bg-slate-800 p-5">
-                <p className="text-sm text-slate-400">
-                  Projeto Atual
-                </p>
-
-                <h4 className="mt-2 text-xl font-semibold">
-                  Instalação Elétrica
-                </h4>
-              </div>
-
-              <div className="rounded-2xl bg-slate-800 p-5">
-                <p className="text-sm text-slate-400">
-                  Entrada
-                </p>
-
-                <h4 className="mt-2 text-3xl font-bold">
-                  07:32
-                </h4>
-              </div>
-
-              <button className="mt-2 w-full rounded-2xl bg-red-500 py-4 text-lg font-semibold transition hover:bg-red-400">
-                Encerrar Jornada
-              </button>
-
+            <div className="rounded-xl border border-border bg-background-deep p-5">
+              <dt className="text-sm text-muted">Entrada</dt>
+              <dd className="mt-2 text-2xl font-bold">07:15</dd>
             </div>
-
-          </div>
-
+            <div className="rounded-xl border border-border bg-background-deep p-5">
+              <dt className="text-sm text-muted">Status</dt>
+              <dd className="mt-2 flex items-center gap-2 font-semibold text-primary">
+                <span
+                  aria-hidden="true"
+                  className="h-2 w-2 rounded-full bg-primary"
+                />
+                Em andamento
+              </dd>
+            </div>
+          </dl>
         </div>
       </section>
     </main>
