@@ -1,2 +1,28 @@
-import type { Metadata } from "next"; import ComingSoonPage from "@/components/dashboard/ComingSoonPage";
-export const metadata: Metadata = { title: "Time Tracking" }; export default function Page() { return <ComingSoonPage title="Time Tracking" />; }
+import type { Metadata } from "next";
+import PageHeader from "@/components/dashboard/PageHeader";
+import TimeTracker from "@/components/time/TimeTracker";
+import { projects, recentEntries, tasks, todaySummary, weeklySummary } from "@/lib/mock/time";
+
+export const metadata: Metadata = { title: "Time Tracking" };
+
+export default function TimeTrackingPage() {
+  return (
+    <section aria-labelledby="time-tracking-heading">
+      <PageHeader
+        headingId="time-tracking-heading"
+        eyebrow="Workspace"
+        title="Time Tracking"
+        description="Track your work hours accurately."
+      />
+      <div className="mt-8">
+        <TimeTracker
+          projects={projects}
+          tasks={tasks}
+          entries={recentEntries}
+          todaySummary={todaySummary}
+          weeklySummary={weeklySummary}
+        />
+      </div>
+    </section>
+  );
+}
