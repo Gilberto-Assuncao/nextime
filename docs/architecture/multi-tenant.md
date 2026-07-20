@@ -1,11 +1,25 @@
-# Multi-tenant, RLS, and storage
+# Multi-tenant architecture and RLS
 
-Company membership is the tenant boundary. `private.is_company_member(company_id)` evaluates active membership using `auth.uid()`. Tenant table policies call this function, and tenant columns are indexed. The private schema is not API-exposed.
+Company Membership is the tenant boundary. One permanent Profile may hold multiple active memberships, while every tenant-owned record retains an explicit `company_id`.
 
-All application repository calls require a `TenantContext`. This application-level filter improves clarity but does not replace database enforcement. Every tenant-owned query must include `company_id`, and every mutation must derive it from the trusted current membership rather than user-controlled form data.
+## Active-company context
 
-RLS is enabled across the foundation schema. Initial policies cover personal identity, membership discovery, company visibility, tenant operational data, and personal notifications. Tables without an explicit policy are deny-by-default. Future permissions should be implemented with membership roles and permissions, then enforced through tested RLS functions. Service-role operations bypass RLS and must remain server-only and narrowly scoped.
+After server-side authentication, NEXTIME loads only active memberships belonging to `auth.uid()`. The active company is selected from those memberships and exposed to the App Shell through a minimal session DTO.
 
-Private storage buckets are provisioned for `avatars`, `company-logos`, `documents`, `reports`, `certificates`, `project-images`, and `site-photos`. Storage object operations must use the Storage API. Before uploads are enabled, add path conventions such as `<companyId>/<entityId>/<file>` and policies that validate the first folder against active membership; never update `storage` schema metadata directly.
+The Company Switcher calls a Server Action. Before changing context, the action revalidates the authenticated user and checks for an active membership in the requested company. Only then does it store the company identifier in the `nextime-active-company` cookie. The cookie is `HttpOnly`, `SameSite=Lax`, secure in production, scoped to `/`, and limited to 30 days.
 
-Company relationships connect tenants without merging their data. Cross-company collaboration must use explicit relationship-aware grants or shared records in future migrations, never weaken the base company policy.
+The cookie is a preference, not an authorization grant. Every request rechecks that its value remains in the user’s active-company list; invalid or stale values fall back to the first valid membership. Data repositories must obtain `companyId` from `requireActiveCompany()` and never accept tenant identity directly from browser form data.
+
+## Isolation model
+
+- Application queries filter by the trusted active `companyId`.
+- `private.is_company_member(company_id)` verifies active membership using `auth.uid()`.
+- RLS remains enabled and protects every tenant table.
+- Switching companies changes query context; it never broadens membership.
+- Cross-company collaboration requires explicit future relationship policies and must not weaken tenant policies.
+
+Sprint 3.7 adds only the policies required to discover the signed-in user’s role and settings. It does not implement complete RBAC. Service-role operations bypass RLS and must remain isolated, narrowly scoped, and server-only.
+
+## Database onboarding
+
+The authentication migration creates or updates the matching `public.users` Profile after an `auth.users` insert/update and initializes `user_settings`. It does not automatically create a company, billing account, invitation, or privileged role. Company onboarding and invitation workflows remain future business features.

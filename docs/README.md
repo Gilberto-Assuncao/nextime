@@ -4,9 +4,14 @@ This directory is the canonical technical and product context for NEXTIME. Imple
 
 ## Product and delivery
 
+- [Official Development Handbook](project/README.md)
 - [Product vision and handbook](vision/nextime-handbook.md)
 - [Product roadmap](roadmap/roadmap.md)
 - [Sprint 3.5.2](sprints/sprint-3.5.2.md)
+- [Sprint 3.6 — Workforce Management Foundation](sprints/sprint-3.6.md)
+- [Sprint 3.7 — Authentication & Multi-Tenant Foundation](sprints/sprint-3.7.md)
+- [Sprint 3.8 — Company Management](sprints/sprint-3.8.md)
+- [Sprint 3.9 — Teams](sprints/sprint-3.9.md)
 
 ## Architecture
 
@@ -16,6 +21,9 @@ This directory is the canonical technical and product context for NEXTIME. Imple
 - [Authentication](architecture/authentication.md)
 - [Database foundation](architecture/database.md)
 - [Multi-tenancy and RLS](architecture/multi-tenant.md)
+- [Workforce Management](architecture/workforce-management.md)
+- [Company Management](architecture/company-management.md)
+- [Team Management](architecture/team-management.md)
 
 ## Design
 

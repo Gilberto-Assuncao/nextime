@@ -7,6 +7,10 @@ schemas = ["public", "graphql_public"]
 [db]
 major_version = 17
 
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql"]
+
 [auth]
 enabled = true
 site_url = "http://localhost:3000"
@@ -14,7 +18,3 @@ additional_redirect_urls = ["http://localhost:3000/auth/callback"]
 
 [storage]
 enabled = true
-
-[seed]
-enabled = true
-sql_paths = ["./seed.sql"]

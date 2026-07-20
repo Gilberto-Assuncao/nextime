@@ -16,3 +16,4 @@ export * from "./shared";
 export * from "./timesheet";
 export * from "./user";
 export * from "./user-settings";
+export * from "./workforce";

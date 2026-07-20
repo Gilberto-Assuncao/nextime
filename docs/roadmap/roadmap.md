@@ -2,17 +2,23 @@
 
 ## Confirmed delivery
 
-The Git history confirms delivery of the landing page and mobile navigation, authentication interface, dashboard shell and KPIs, employee management interface, architecture consistency improvements, time tracking, timesheets, and projects/clients through Sprint 3.3.
+The Git history confirms delivery of the landing page and mobile navigation, authentication interface, dashboard shell and KPIs, employee management interface, architecture consistency improvements, time tracking, timesheets, projects/clients, domain and SaaS foundations, the Design System, and Sprint 3.5.2 App Shell integration.
 
-Local, not-yet-committed work prepares Sprint 3.4 domain architecture, Sprint 3.5 Supabase and SaaS foundations, and Sprint 3.5.1 design-system infrastructure. These are not considered merged until reviewed and committed.
+## Completed foundation
+
+**Sprint 3.7 — Authentication & Multi-Tenant Foundation:** completed locally with Supabase authentication, persistent cookie sessions, protected internal routes, authenticated App Shell identity, active-company context, company switching, and minimum supporting RLS policies.
+
+## Completed company foundation
+
+**Sprint 3.8 — Company Management:** completed locally with authorized overview, transactional creation, editing, settings, summaries, safe archival, and active-company integration.
 
 ## Current sprint
 
-**Sprint 3.5.2 — App Shell, Navigation & Layout System:** organize durable project documentation, implement the reusable authenticated application shell, and integrate it with the existing dashboard without removing dashboard content.
+**Sprint 3.9 — Teams:** deliver active-company team overview, creation, details, editing, leadership, membership management, safe archival, Workforce integration, and tenant authorization.
 
 ## Next sprint
 
-**Sprint 3.6:** scope to be confirmed after review of the domain, SaaS, design-system, and App Shell foundations. It should prioritize migration quality and one clearly bounded product capability rather than broad parallel module implementation.
+The next stage is planned to apply and verify pending migrations in a controlled Supabase environment, then connect teams to one bounded planning or project workflow. Detailed RBAC, invitations, schedules, sensitive employment data, billing, payroll, cost, and profitability remain planned.
 
 ## Planned modules
 
