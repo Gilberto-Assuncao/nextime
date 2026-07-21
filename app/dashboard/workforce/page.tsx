@@ -1,3 +1,3 @@
-import type { Metadata } from "next"; import { WorkforceOverview, demoWorkforceMembers, demoWorkforceTeams } from "@/src/features/workforce";
+import type { Metadata } from "next"; import { WorkforceOverview, getWorkforceOverview } from "@/src/features/workforce";
 export const metadata:Metadata={title:"Workforce"};
-export default function WorkforcePage(){return <WorkforceOverview members={demoWorkforceMembers} teams={demoWorkforceTeams}/>;}
+export default async function WorkforcePage(){const {members,teams}=await getWorkforceOverview();return <WorkforceOverview members={members} teams={teams}/>;}

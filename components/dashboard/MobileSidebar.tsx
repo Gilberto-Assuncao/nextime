@@ -3,12 +3,17 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import DashboardNav from "./DashboardNav";
-import { currentUser } from "@/lib/mock/current-user";
+import { useSessionContext } from "@/src/application/session/session-provider";
 
 type MobileSidebarProps = { open: boolean; onClose: () => void };
 
+function formatRole(role: string | undefined): string {
+  return role ? role.charAt(0).toUpperCase() + role.slice(1) : "Member";
+}
+
 export default function MobileSidebar({ open, onClose }: MobileSidebarProps) {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const session = useSessionContext();
 
   useEffect(() => {
     if (!open) return;
@@ -29,7 +34,7 @@ export default function MobileSidebar({ open, onClose }: MobileSidebarProps) {
           <button ref={closeButtonRef} type="button" onClick={onClose} className="flex min-h-11 min-w-11 items-center justify-center rounded-lg text-[#9CA3AF] hover:bg-white/5 hover:text-[#E5E7EB] focus-visible:outline-2 focus-visible:outline-[#22C55E]" aria-label="Close menu"><span aria-hidden="true" className="text-2xl">×</span></button>
         </div>
         <DashboardNav />
-        <div className="border-t border-white/10 p-4 text-sm"><p className="font-semibold text-[#E5E7EB]">{currentUser.name}</p><p className="mt-1 text-xs text-[#9CA3AF]">{currentUser.role}</p><button type="button" className="mt-3 min-h-11 w-full rounded-lg border border-white/10 text-[#9CA3AF] hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-[#22C55E]">Sign Out</button></div>
+        <div className="border-t border-white/10 p-4 text-sm"><p className="font-semibold text-[#E5E7EB]">{session?.user.name ?? ""}</p><p className="mt-1 text-xs text-[#9CA3AF]">{formatRole(session?.activeCompany?.roles[0])}</p><button type="button" className="mt-3 min-h-11 w-full rounded-lg border border-white/10 text-[#9CA3AF] hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-[#22C55E]">Sign Out</button></div>
       </aside>
     </div>
   );

@@ -1,0 +1,82 @@
+import "server-only";
+
+import { createClient } from "@/src/infrastructure/supabase/server";
+import { requireActiveCompany } from "@/src/application/session/server";
+import type { DailySummary, EntryStatus, Project, Task, TimeEntry, WeeklySummary } from "@/lib/types/time";
+
+const WEEKLY_TARGET_MINUTES = 2400;
+
+type RelatedOne<T> = T | T[] | null;
+interface EntryRow {
+  id: string;
+  starts_at: string;
+  ends_at: string;
+  break_minutes: number;
+  status: "draft" | "submitted" | "approved" | "rejected";
+  projects: RelatedOne<{ id: string; name: string }>;
+  tasks: RelatedOne<{ id: string; name: string }>;
+}
+
+function first<T>(value: RelatedOne<T>): T | null { return Array.isArray(value) ? (value[0] ?? null) : value; }
+function statusLabel(status: EntryRow["status"]): EntryStatus {
+  if (status === "approved") return "Approved";
+  if (status === "rejected") return "Rejected";
+  return "Pending";
+}
+function workedMinutes(row: EntryRow): number {
+  const minutes = Math.round((new Date(row.ends_at).getTime() - new Date(row.starts_at).getTime()) / 60000);
+  return Math.max(0, minutes - row.break_minutes);
+}
+function dateKey(iso: string): string { return new Date(iso).toISOString().slice(0, 10); }
+function formatDate(iso: string): string {
+  return new Intl.DateTimeFormat("en", { month: "short", day: "numeric", year: "numeric" }).format(new Date(iso));
+}
+
+export async function getTimeTrackingOverview(): Promise<{
+  projects: Project[]; tasks: Task[]; recentEntries: TimeEntry[]; todaySummary: DailySummary; weeklySummary: WeeklySummary;
+}> {
+  const { session, companyId } = await requireActiveCompany();
+  const userId = session.user.id;
+  const supabase = await createClient();
+
+  const weekStart = new Date();
+  weekStart.setDate(weekStart.getDate() - 7);
+
+  const [{ data: projectRows }, { data: taskRows }, { data: entryRows, error }] = await Promise.all([
+    supabase.from("projects").select("id,name").eq("company_id", companyId).order("name"),
+    supabase.from("tasks").select("id,name").eq("company_id", companyId).eq("status", "active").order("name"),
+    supabase
+      .from("timesheet_entries")
+      .select("id,starts_at,ends_at,break_minutes,status,projects(id,name),tasks(id,name),timesheets!inner(user_id)")
+      .eq("company_id", companyId)
+      .eq("timesheets.user_id", userId)
+      .gte("starts_at", weekStart.toISOString())
+      .order("starts_at", { ascending: false }),
+  ]);
+  if (error) throw new Error("Unable to load time tracking entries.");
+
+  const projects: Project[] = projectRows ?? [];
+  const tasks: Task[] = taskRows ?? [];
+  const rows = (entryRows ?? []) as unknown as EntryRow[];
+
+  const recentEntries: TimeEntry[] = rows.slice(0, 10).flatMap((row) => {
+    const project = first(row.projects);
+    const task = first(row.tasks);
+    if (!project || !task) return [];
+    return [{ id: row.id, project, task, durationMinutes: workedMinutes(row), date: formatDate(row.starts_at), status: statusLabel(row.status) }];
+  });
+
+  const today = new Date().toISOString().slice(0, 10);
+  const todayRows = rows.filter((row) => dateKey(row.starts_at) === today);
+  const todaySummary: DailySummary = {
+    workedMinutes: todayRows.reduce((sum, row) => sum + workedMinutes(row), 0),
+    breakMinutes: todayRows.reduce((sum, row) => sum + row.break_minutes, 0),
+    sessions: todayRows.length,
+  };
+  const weeklySummary: WeeklySummary = {
+    workedMinutes: rows.reduce((sum, row) => sum + workedMinutes(row), 0),
+    targetMinutes: WEEKLY_TARGET_MINUTES,
+  };
+
+  return { projects, tasks, recentEntries, todaySummary, weeklySummary };
+}

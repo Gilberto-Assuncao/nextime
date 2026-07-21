@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import PageHeader from "@/components/dashboard/PageHeader";
 import TimeTracker from "@/components/time/TimeTracker";
-import { projects, recentEntries, tasks, todaySummary, weeklySummary } from "@/lib/mock/time";
+import { getTimeTrackingOverview } from "@/src/features/time-tracking/data";
 
 export const metadata: Metadata = { title: "Time Tracking" };
 
-export default function TimeTrackingPage() {
+export default async function TimeTrackingPage() {
+  const { projects, tasks, recentEntries, todaySummary, weeklySummary } = await getTimeTrackingOverview();
   return (
     <section aria-labelledby="time-tracking-heading">
       <PageHeader
