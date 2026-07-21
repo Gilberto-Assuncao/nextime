@@ -23,8 +23,8 @@ export async function getTeamWorkspace() {
   const current = session.activeCompany!;
   const supabase = await createClient();
   const [{ data: teams, error }, { data: members }] = await Promise.all([
-    supabase.from("teams").select("id,company_id,name,description,status,color,icon,leader_membership_id,created_at,updated_at,leader:company_memberships!teams_leader_membership_id_fkey(id,job_title,users(id,name,email)),team_memberships(id,left_at)").eq("company_id", companyId).order("updated_at", { ascending: false }),
-    supabase.from("company_memberships").select("id,job_title,users(id,name,email)").eq("company_id", companyId).eq("status", "active"),
+    supabase.from("teams").select("id,company_id,name,description,status,color,icon,leader_membership_id,created_at,updated_at,leader:company_memberships!teams_leader_membership_id_fkey(id,job_title,users!company_memberships_user_id_fkey(id,name,email)),team_memberships(id,left_at)").eq("company_id", companyId).order("updated_at", { ascending: false }),
+    supabase.from("company_memberships").select("id,job_title,users!company_memberships_user_id_fkey(id,name,email)").eq("company_id", companyId).eq("status", "active"),
   ]);
   if (error) throw new Error("Unable to load teams.");
 
@@ -52,7 +52,7 @@ export async function getTeamDetails(teamId: string): Promise<TeamDetails | null
   const supabase = await createClient();
   const [{ data: team }, { data: links }] = await Promise.all([
     supabase.from("teams").select("id,leader_membership_id,created_at").eq("id", teamId).eq("company_id", workspace.companyId).maybeSingle(),
-    supabase.from("team_memberships").select("id,company_membership_id,team_role,joined_at,company_memberships(id,job_title,users(id,name,email))").eq("team_id", teamId).eq("company_id", workspace.companyId).is("left_at", null),
+    supabase.from("team_memberships").select("id,company_membership_id,team_role,joined_at,company_memberships(id,job_title,users!company_memberships_user_id_fkey(id,name,email))").eq("team_id", teamId).eq("company_id", workspace.companyId).is("left_at", null),
   ]);
   if (!team) return null;
   const members: TeamMember[] = ((links ?? []) as { id: string; company_membership_id: string; team_role: TeamMember["role"]; joined_at: string; company_memberships: MembershipJoin }[]).flatMap((link) => {
