@@ -1,6 +1,5 @@
 export * from "./audit-log";
 export * from "./certificate";
-export * from "./chantier";
 export * from "./company";
 export * from "./company-membership";
 export * from "./company-relationship";
@@ -13,6 +12,7 @@ export * from "./project";
 export * from "./report";
 export * from "./role";
 export * from "./shared";
+export * from "./site";
 export * from "./timesheet";
 export * from "./user";
 export * from "./user-settings";
