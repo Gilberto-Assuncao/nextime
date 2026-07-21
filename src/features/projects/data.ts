@@ -18,7 +18,7 @@ interface CompanyRow {
 }
 interface ProjectMembershipRow {
   left_at: string | null;
-  company_memberships: RelatedOne<{ users: RelatedOne<{ name: string }>; membership_roles: { roles: RelatedOne<{ key: string }> }[] | null }>;
+  company_memberships: RelatedOne<{ id: string; users: RelatedOne<{ name: string }>; membership_roles: { roles: RelatedOne<{ key: string }> }[] | null }>;
 }
 interface ProjectRow {
   id: string; name: string; description: string | null; status: ProjectStatus; priority: ProjectPriority;
@@ -43,7 +43,7 @@ async function loadProjects(): Promise<{ projects: Project[]; clients: Client[] 
   const [{ data: projectRows, error }, { data: entryRows }] = await Promise.all([
     supabase
       .from("projects")
-      .select("id,name,description,status,priority,client_company_id,starts_at,ends_at,estimated_hours,budget_amount,budget_spent,budget_currency,project_memberships(left_at,company_memberships(users!company_memberships_user_id_fkey(name),membership_roles(roles(key))))")
+      .select("id,name,description,status,priority,client_company_id,starts_at,ends_at,estimated_hours,budget_amount,budget_spent,budget_currency,project_memberships(left_at,company_memberships(id,users!company_memberships_user_id_fkey(name),membership_roles(roles(key))))")
       .eq("company_id", companyId)
       .order("created_at", { ascending: false }),
     supabase.from("timesheet_entries").select("project_id,starts_at,ends_at,break_minutes,status").eq("company_id", companyId).not("project_id", "is", null),
@@ -87,7 +87,7 @@ async function loadProjects(): Promise<{ projects: Project[]; clients: Client[] 
       if (!membership || !user) return [];
       const roleEntry = membership.membership_roles?.[0] ?? null;
       const role = roleEntry ? first(roleEntry.roles) : null;
-      return [{ id: user.name, name: user.name, role: role?.key ?? "member", initials: initials(user.name) }];
+      return [{ id: membership.id, name: user.name, role: role?.key ?? "member", initials: initials(user.name) }];
     });
     const trackedHours = Math.round((hours.tracked / 60) * 100) / 100;
     return [{

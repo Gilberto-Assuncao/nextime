@@ -27,7 +27,16 @@ function workedMinutes(row: EntryRow): number {
   const minutes = Math.round((new Date(row.ends_at).getTime() - new Date(row.starts_at).getTime()) / 60000);
   return Math.max(0, minutes - row.break_minutes);
 }
-function dateKey(iso: string): string { return new Date(iso).toISOString().slice(0, 10); }
+function dateKey(iso: string): string {
+  // "Today" must be the server's local calendar day, not the UTC day —
+  // toISOString() would shift the boundary for any timezone ahead of UTC
+  // (e.g. Belgium/CEST, UTC+2), same class of bug fixed in timesheets/data.ts.
+  const d = new Date(iso);
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
 function formatDate(iso: string): string {
   return new Intl.DateTimeFormat("en", { month: "short", day: "numeric", year: "numeric" }).format(new Date(iso));
 }
@@ -66,7 +75,7 @@ export async function getTimeTrackingOverview(): Promise<{
     return [{ id: row.id, project, task, durationMinutes: workedMinutes(row), date: formatDate(row.starts_at), status: statusLabel(row.status) }];
   });
 
-  const today = new Date().toISOString().slice(0, 10);
+  const today = dateKey(new Date().toISOString());
   const todayRows = rows.filter((row) => dateKey(row.starts_at) === today);
   const todaySummary: DailySummary = {
     workedMinutes: todayRows.reduce((sum, row) => sum + workedMinutes(row), 0),
