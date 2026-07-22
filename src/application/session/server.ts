@@ -28,29 +28,49 @@ function initials(name: string, email: string) {
   return (parts.length ? parts.slice(0, 2).map((part) => part[0]).join("") : email.slice(0, 2)).toUpperCase();
 }
 
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 export const getAuthenticatedSession = cache(async (): Promise<AuthenticatedSession | null> => {
   const supabase = await createClient();
   const { data: authData, error: authError } = await supabase.auth.getUser();
 
   if (authError || !authData.user?.email) return null;
 
-  const [{ data: profile }, { data: memberships, error: membershipError }, cookieStore] = await Promise.all([
+  const [{ data: profile }, cookieStore] = await Promise.all([
     supabase.from("users").select("name").eq("id", authData.user.id).maybeSingle(),
-    supabase
-      .from("company_memberships")
-      .select("id, company_id, companies(id, name, status), membership_roles(roles(key))")
-      .eq("user_id", authData.user.id)
-      .eq("status", "active"),
     cookies(),
   ]);
 
-  if (membershipError) {
+  let memberships: unknown[] | null = null;
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    const { data, error: membershipError } = await supabase
+      .from("company_memberships")
+      .select("id, company_id, companies(id, name, status), membership_roles(roles(key))")
+      .eq("user_id", authData.user.id)
+      .eq("status", "active");
+
+    if (!membershipError) {
+      memberships = data;
+      break;
+    }
+
+    // "JWT issued at future" (PGRST303) is a transient clock-skew race between
+    // the freshly minted auth token and PostgREST's validation clock — most
+    // common on the first request right after sign-in/sign-up. Retry briefly
+    // instead of failing the whole session load.
+    if (membershipError.code === "PGRST303" && attempt < 2) {
+      await sleep(300 * (attempt + 1));
+      continue;
+    }
+
     console.error("Membership query failed", {
-  message: membershipError.message,
-  code: membershipError.code,
-  details: membershipError.details,
-  hint: membershipError.hint,
-});
+      message: membershipError.message,
+      code: membershipError.code,
+      details: membershipError.details,
+      hint: membershipError.hint,
+    });
     throw new Error("Unable to load company memberships.");
   }
 
