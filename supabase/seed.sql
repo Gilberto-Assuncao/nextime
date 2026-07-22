@@ -1,10 +1,15 @@
 -- Development-only deterministic tenant data. Auth users are created through Supabase Auth tooling.
 insert into public.roles (key,name,system) values ('owner','Owner',true),('administrator','Administrator',true),('manager','Manager',true),('supervisor','Supervisor',true),('employee','Employee',true),('contractor','Contractor',true),('accountant','Accountant',true) on conflict(key) do nothing;
 insert into public.permissions (key,resource,action) values ('projects.read','projects','read'),('projects.manage','projects','manage'),('timesheets.read','timesheets','read'),('timesheets.submit','timesheets','submit'),('timesheets.approve','timesheets','approve'),('reports.read','reports','read'),('finance.read','finance','read'),('company.manage','company','manage') on conflict(key) do nothing;
-insert into public.companies (id,name,vat,country,city) values ('00000000-0000-4000-8000-000000000001','BELNEX ENERGY','BE-DEMO-001','Belgium','Brussels'),('00000000-0000-4000-8000-000000000002','GeoTech','BE-DEMO-002','Belgium','Liège') on conflict(id) do nothing;
+insert into public.companies (id,name,vat,website,country,city,email,street_address,postal_code,establishment_number,activity_start_date) values
+    ('00000000-0000-4000-8000-000000000001','BELNEX ENERGY','BE1038194067','https://belnexenergy.be','Belgium','Grimbergen','contact@belnexenergy.be','Coppendries 3, bus 2','1852','2.389.195.023','2026-07-01'),
+    ('00000000-0000-4000-8000-000000000002','GeoTech','BE-DEMO-002',null,'Belgium','Liège',null,null,null,null,null)
+on conflict(id) do update set vat=excluded.vat, website=excluded.website, city=excluded.city, email=excluded.email, street_address=excluded.street_address, postal_code=excluded.postal_code, establishment_number=excluded.establishment_number, activity_start_date=excluded.activity_start_date;
 insert into public.company_relationships (source_company_id,target_company_id,relationship_type) values ('00000000-0000-4000-8000-000000000001','00000000-0000-4000-8000-000000000002','contractor') on conflict do nothing;
 insert into public.projects (id,company_id,client_company_id,name,status,estimated_hours) values ('00000000-0000-4000-8000-000000000101','00000000-0000-4000-8000-000000000001','00000000-0000-4000-8000-000000000002','Energy Site Modernization','active',720) on conflict(id) do nothing;
-insert into public.sites (id,company_id,project_id,client_company_id,name,address,status) values ('00000000-0000-4000-8000-000000000201','00000000-0000-4000-8000-000000000001','00000000-0000-4000-8000-000000000101','00000000-0000-4000-8000-000000000002','GeoTech Main Site','{"city":"Liège","country":"Belgium"}','open') on conflict(id) do nothing;
+insert into public.tasks (id,company_id,project_id,name,status) values ('00000000-0000-4000-8000-000000000401','00000000-0000-4000-8000-000000000001','00000000-0000-4000-8000-000000000101','Site inspection','active') on conflict(id) do nothing;
+insert into public.teams (id,company_id,name,description,status) values ('00000000-0000-4000-8000-000000000501','00000000-0000-4000-8000-000000000001','Field Operations','Electrical and HVAC installation crews.','active') on conflict(id) do nothing;
+insert into public.sites (id,company_id,project_id,client_company_id,name,address,latitude,longitude,status) values ('00000000-0000-4000-8000-000000000201','00000000-0000-4000-8000-000000000001','00000000-0000-4000-8000-000000000101','00000000-0000-4000-8000-000000000002','GeoTech Main Site','{"city":"Liège","country":"Belgium"}',50.6326,5.5797,'open') on conflict(id) do update set latitude=excluded.latitude, longitude=excluded.longitude;
 
 insert into auth.users (
     instance_id,id,aud,role,email,encrypted_password,email_confirmed_at,
@@ -76,6 +81,10 @@ where not exists (
       and m.status in ('invited','active','suspended')
 );
 insert into public.membership_roles (membership_id,role_id) select '00000000-0000-4000-8000-000000002001',id from public.roles where key='administrator' on conflict do nothing;
+-- Also grant 'owner' to the demo admin so it passes every owner-only check
+-- (e.g. archive/reactivate company) in addition to the administrator-level
+-- actions it already had — full unrestricted access for this account.
+insert into public.membership_roles (membership_id,role_id) select '00000000-0000-4000-8000-000000002001',id from public.roles where key='owner' on conflict do nothing;
 insert into public.membership_roles (membership_id,role_id) select '00000000-0000-4000-8000-000000002002',id from public.roles where key='supervisor' on conflict do nothing;
 insert into public.membership_roles (membership_id,role_id) select '00000000-0000-4000-8000-000000002003',id from public.roles where key='employee' on conflict do nothing;
 insert into public.employee_records (company_id,company_membership_id,job_title,employment_type,employment_status,start_date) values
