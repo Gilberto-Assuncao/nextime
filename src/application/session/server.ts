@@ -98,6 +98,6 @@ export async function requireAuthenticatedSession() {
 
 export async function requireActiveCompany() {
   const session = await requireAuthenticatedSession();
-  if (!session.activeCompany) throw new Error("No active company membership is available.");
+  if (!session.activeCompany) redirect("/dashboard/companies/new");
   return { session, companyId: session.activeCompany.id };
 }
