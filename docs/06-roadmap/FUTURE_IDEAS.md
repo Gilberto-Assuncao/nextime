@@ -81,7 +81,7 @@ Status: Research
 -   Automatic planning suggestions
 -   Concrete scenario registered 2026-07-21: alert a manager when forecast weather (e.g. a snowstorm) may delay or block a scheduled Site's work, and suggest moving that work earlier. See [../02-architecture/WEATHER_INTELLIGENCE.md](../02-architecture/WEATHER_INTELLIGENCE.md) for the existing conceptual architecture this extends (provider-neutral adapter, Site coordinates, no automatic rewriting of authoritative timesheets).
 
-Status: **Planned** — prioritized 2026-07-21, promoted to `06-roadmap/FEATURE_ROADMAP.md` (target 6.x). No longer "someday" — not yet scheduled to a specific Sprint or implemented.
+Status: **Completed (first slice)** — Sprint 6.7 (2026-07-22). Provider decided: Open-Meteo (free, keyless, avoids tying the project to a paid account). Delivered: a provider-neutral `WeatherProvider` adapter (`src/infrastructure/weather/`), a 7-day forecast + delay-risk alert (heavy rain / strong wind thresholds) per Site, and the first-ever `/dashboard/sites` page (read-only list, enabled in nav). Not built yet: persisted forecast snapshots, historical-observation distinction, audit logs, retention rules, and project-report integration — the original doc's "traceable snapshot history" ambition is still open.
 
 ------------------------------------------------------------------------
 
@@ -91,7 +91,7 @@ Status: **Planned** — prioritized 2026-07-21, promoted to `06-roadmap/FEATURE_
 -   Builds directly on data that will already exist once Time Tracking write persistence ships (Sprint 5.4 only wired the read side) and on `sites.latitude`/`longitude` — no new entities needed, only a geolocation capture point on clock-in/out and a map UI. `src/components/maps/Maps.tsx` (`MapContainer`, `GpsBadge`, `SiteMarker`) already exists as a design-system placeholder for this.
 -   Privacy note to resolve before building: capturing an employee's clock-in location is more sensitive than the Site's own coordinates — needs an explicit permission/consent design, not just a schema addition (ties into the GDPR gap already flagged in `02-architecture/DATABASE_ARCHITECTURE.md`).
 
-Status: **Planned** — prioritized 2026-07-21, promoted to `06-roadmap/FEATURE_ROADMAP.md` (target 6.x). No longer "someday" — the consent-design decision above must still be resolved before implementation starts.
+Status: **Completed (first slice)** — Sprint 6.9 (2026-07-22). Consent decision: explicit per-employee opt-in (a toggle in `/dashboard/settings`, off by default), not a company-wide policy — chosen so a manager can't unilaterally turn on location tracking for their whole team. Delivered: `user_settings.location_consent`/`location_consent_at` columns, geolocation captured client-side only on timer stop (never on manual entries), the server re-verifies consent before persisting (never trusts the client), and `/dashboard/map` shows each opted-in member's most recent clock-in location with a relative-map placeholder layout (no real basemap library wired up — that would be its own provider decision). Known limitation: there is no persisted "currently running" session in the schema, so this shows "where they started their last completed session today," not true real-time presence.
 
 ------------------------------------------------------------------------
 
@@ -100,7 +100,7 @@ Status: **Planned** — prioritized 2026-07-21, promoted to `06-roadmap/FEATURE_
 -   Let a company view and filter workforce by Team, role, manager (`employee_records.manager_membership_id` already models this), and Site, then surface divergence in hours logged between members of the same team for the same period.
 -   Mostly a reporting/query feature on top of entities that already exist (`teams`, `team_memberships`, `employee_records`, `sites`, `timesheet_entries`) — no new tables anticipated, though a dedicated aggregation view or RPC would likely be needed once volume grows beyond simple client-side computation (the pattern used so far in Workforce/Time Tracking/Timesheets).
 
-Status: **Planned** — prioritized 2026-07-21, promoted to `06-roadmap/FEATURE_ROADMAP.md` (target 6.x). No longer "someday" — not yet scheduled to a specific Sprint or implemented.
+Status: **Completed** — delivered Sprint 6.5 (2026-07-21), browser-verified with real Supabase data at `/dashboard/reports`. Team + Site hours only; role/manager filter dimensions from the original idea are not yet built.
 
 ------------------------------------------------------------------------
 
@@ -120,7 +120,7 @@ Status: Concept (registered 2026-07-21)
 -   Confirms and sharpens the multi-language architecture note already registered in `01-product/PRODUCT_VISION.md` and `02-architecture/DATABASE_ARCHITECTURE.md`: language coverage must include Eastern European languages (e.g. Polish, Romanian), reflecting the workforce composition common in large European cities, not just Belgium's own official languages.
 -   No new data-model work — `localization_settings` already stores an arbitrary `language` per user or company. The gap remains the same one already flagged: no i18n framework is installed in the app yet.
 
-Status: **Planned** — prioritized 2026-07-21, promoted to `06-roadmap/FEATURE_ROADMAP.md` (target 6.x). No longer "someday" — installing and wiring an i18n framework is the concrete next step whenever scheduled.
+Status: **In Progress** — Sprint 6.6 (2026-07-22): next-intl chosen and installed, `app/` moved under `app/[locale]/`, `proxy.ts` now runs next-intl's routing alongside the existing Supabase auth gate, and the sidebar navigation + login form are wired and browser-verified in all 9 locales (en/pt/fr/nl/de/pl/ro/es/it). Remaining: translate the rest of the app's pages/components — only nav labels and the login form have real message keys so far.
 
 ------------------------------------------------------------------------
 
@@ -130,7 +130,7 @@ Status: **Planned** — prioritized 2026-07-21, promoted to `06-roadmap/FEATURE_
 -   Notify the user during the day if they haven't clocked in/out yet, and flag a late entry when it is eventually submitted.
 -   `company_settings` already has `week_starts_on`, `date_format`, `time_format`, `notifications_enabled` — this would add schedule-specific fields (e.g. expected start/end time, break windows, grace-period minutes) plus a scheduled/background job to evaluate "is anyone late right now," which is new: nothing in the current architecture runs on a timer (everything today is request-driven).
 
-Status: **Planned** — prioritized 2026-07-21, promoted to `06-roadmap/FEATURE_ROADMAP.md` (target 6.x). No longer "someday" — the background-job mechanism is the concrete architectural decision still needed before implementation.
+Status: **Completed (first slice)** — Sprint 6.10 (2026-07-22). Background-job decision: Vercel Cron calling a secured API route (`/api/cron/punctuality`, `CRON_SECRET`-gated, schedule in `vercel.json`), not pg_cron — keeps the logic in the app layer like everything else, at the cost of the cron only firing when deployed on Vercel. Delivered: `company_settings.expected_start_time/expected_end_time/grace_minutes/punctuality_reminders_enabled`, a settings-form section to configure them, and the cron endpoint that creates a real `notifications` row for anyone who hasn't clocked in by the deadline (deduped per user per day, timezone-aware). Browser-verified end to end: configured the schedule, hit the endpoint, saw the notification land in the bell. Two real bugs found and fixed along the way: a naive UTC-midnight boundary that mis-excluded entries made just after local midnight in timezones ahead of UTC, and `notifications` never having a `metadata` column at all — the insert was failing silently until both were fixed. Company-level schedule only in this slice — no per-user override yet.
 
 ------------------------------------------------------------------------
 
