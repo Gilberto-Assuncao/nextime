@@ -1,0 +1,30 @@
+{
+  "nav": {
+    "dashboard": "Tableau de bord",
+    "workforce": "Effectifs",
+    "time": "Suivi du temps",
+    "timesheets": "Feuilles de temps",
+    "projects": "Projets",
+    "sites": "Chantiers",
+    "map": "Carte en direct",
+    "teams": "Équipes",
+    "companies": "Entreprises",
+    "connect": "NEXTIME Connect",
+    "reports": "Rapports",
+    "finance": "Finances",
+    "marketplace": "Marché",
+    "settings": "Paramètres"
+  },
+  "login": {
+    "title": "Content de vous revoir",
+    "description": "Connectez-vous pour gérer votre temps, vos projets et vos équipes.",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "rememberMe": "Se souvenir de moi",
+    "forgotPassword": "Mot de passe oublié ?",
+    "signIn": "Se connecter",
+    "signingIn": "Connexion en cours…",
+    "newToNextime": "Nouveau sur NEXTIME ?",
+    "createAccount": "Créer un compte"
+  }
+}

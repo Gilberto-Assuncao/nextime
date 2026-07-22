@@ -2,12 +2,11 @@ import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 import { getPublicEnvironment } from "@/src/infrastructure/config/env";
 
-const protectedPrefixes = ["/dashboard", "/workforce", "/projects", "/settings"];
-const authEntryRoutes = ["/login", "/register", "/forgot-password"];
+type RouteGroups = { protectedPrefixes: string[]; authEntryRoutes: string[] };
 
-export async function updateSession(request: NextRequest) {
+export async function updateSession(request: NextRequest, baseResponse: NextResponse, logicalPath: string, routes: RouteGroups) {
   const env = getPublicEnvironment();
-  let response = NextResponse.next({ request });
+  let response = baseResponse;
   const supabase = createServerClient(env.supabaseUrl, env.supabaseAnonKey, {
     cookies: {
       getAll: () => request.cookies.getAll(),
@@ -20,17 +19,16 @@ export async function updateSession(request: NextRequest) {
   });
 
   const {
-  data: { user },
-} = await supabase.auth.getUser();
+    data: { user },
+  } = await supabase.auth.getUser();
 
-const isAuthenticated = Boolean(user);
-  const pathname = request.nextUrl.pathname;
-  const isProtected = protectedPrefixes.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`));
-  const isAuthEntry = authEntryRoutes.includes(pathname);
+  const isAuthenticated = Boolean(user);
+  const isProtected = routes.protectedPrefixes.some((prefix) => logicalPath === prefix || logicalPath.startsWith(`${prefix}/`));
+  const isAuthEntry = routes.authEntryRoutes.includes(logicalPath);
 
   if (isProtected && !isAuthenticated) {
     const loginUrl = new URL("/login", request.url);
-    loginUrl.searchParams.set("next", `${pathname}${request.nextUrl.search}`);
+    loginUrl.searchParams.set("next", `${request.nextUrl.pathname}${request.nextUrl.search}`);
     return NextResponse.redirect(loginUrl);
   }
 

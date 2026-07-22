@@ -1,0 +1,30 @@
+{
+  "nav": {
+    "dashboard": "Panel",
+    "workforce": "Pracownicy",
+    "time": "Rejestracja czasu",
+    "timesheets": "Karty czasu pracy",
+    "projects": "Projekty",
+    "sites": "Place budowy",
+    "map": "Mapa na żywo",
+    "teams": "Zespoły",
+    "companies": "Firmy",
+    "connect": "NEXTIME Connect",
+    "reports": "Raporty",
+    "finance": "Finanse",
+    "marketplace": "Rynek",
+    "settings": "Ustawienia"
+  },
+  "login": {
+    "title": "Witamy ponownie",
+    "description": "Zaloguj się, aby zarządzać czasem, projektami i zespołami.",
+    "email": "E-mail",
+    "password": "Hasło",
+    "rememberMe": "Zapamiętaj mnie",
+    "forgotPassword": "Nie pamiętasz hasła?",
+    "signIn": "Zaloguj się",
+    "signingIn": "Logowanie…",
+    "newToNextime": "Nowy w NEXTIME?",
+    "createAccount": "Utwórz konto"
+  }
+}

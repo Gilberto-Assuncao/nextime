@@ -1,0 +1,30 @@
+{
+  "nav": {
+    "dashboard": "Painel",
+    "workforce": "Força de Trabalho",
+    "time": "Registo de Horas",
+    "timesheets": "Folhas de Horas",
+    "projects": "Projetos",
+    "sites": "Obras",
+    "map": "Mapa em tempo real",
+    "teams": "Equipas",
+    "companies": "Empresas",
+    "connect": "NEXTIME Connect",
+    "reports": "Relatórios",
+    "finance": "Finanças",
+    "marketplace": "Mercado",
+    "settings": "Definições"
+  },
+  "login": {
+    "title": "Bem-vindo de volta",
+    "description": "Inicie sessão para gerir o seu tempo, projetos e equipas.",
+    "email": "Email",
+    "password": "Palavra-passe",
+    "rememberMe": "Lembrar-me",
+    "forgotPassword": "Esqueceu a palavra-passe?",
+    "signIn": "Iniciar sessão",
+    "signingIn": "A iniciar sessão…",
+    "newToNextime": "Novo no NEXTIME?",
+    "createAccount": "Criar conta"
+  }
+}

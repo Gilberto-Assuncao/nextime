@@ -1,0 +1,30 @@
+{
+  "nav": {
+    "dashboard": "Übersicht",
+    "workforce": "Belegschaft",
+    "time": "Zeiterfassung",
+    "timesheets": "Stundenzettel",
+    "projects": "Projekte",
+    "sites": "Baustellen",
+    "map": "Live Karte",
+    "teams": "Teams",
+    "companies": "Unternehmen",
+    "connect": "NEXTIME Connect",
+    "reports": "Berichte",
+    "finance": "Finanzen",
+    "marketplace": "Marktplatz",
+    "settings": "Einstellungen"
+  },
+  "login": {
+    "title": "Willkommen zurück",
+    "description": "Melden Sie sich an, um Ihre Zeit, Projekte und Teams zu verwalten.",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "rememberMe": "Angemeldet bleiben",
+    "forgotPassword": "Passwort vergessen?",
+    "signIn": "Anmelden",
+    "signingIn": "Anmeldung läuft…",
+    "newToNextime": "Neu bei NEXTIME?",
+    "createAccount": "Konto erstellen"
+  }
+}

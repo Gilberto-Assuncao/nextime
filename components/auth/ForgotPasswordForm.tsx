@@ -2,8 +2,8 @@
 
 import { useActionState } from "react";
 import Link from "next/link";
-import { requestPasswordResetAction } from "@/app/auth/actions";
-import { initialAuthState } from "@/app/auth/state";
+import { requestPasswordResetAction } from "@/app/[locale]/auth/actions";
+import { initialAuthState } from "@/app/[locale]/auth/state";
 import AuthCard from "./AuthCard";
 import AuthInput from "./AuthInput";
 import AuthStatus from "./AuthStatus";

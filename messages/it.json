@@ -1,0 +1,30 @@
+{
+  "nav": {
+    "dashboard": "Bacheca",
+    "workforce": "Personale",
+    "time": "Rilevazione ore",
+    "timesheets": "Fogli ore",
+    "projects": "Progetti",
+    "sites": "Cantieri",
+    "map": "Mappa live",
+    "teams": "Team",
+    "companies": "Aziende",
+    "connect": "NEXTIME Connect",
+    "reports": "Report",
+    "finance": "Finanza",
+    "marketplace": "Marketplace",
+    "settings": "Impostazioni"
+  },
+  "login": {
+    "title": "Bentornato",
+    "description": "Accedi per gestire il tuo tempo, i progetti e i team.",
+    "email": "E-mail",
+    "password": "Password",
+    "rememberMe": "Ricordami",
+    "forgotPassword": "Password dimenticata?",
+    "signIn": "Accedi",
+    "signingIn": "Accesso in corso…",
+    "newToNextime": "Nuovo su NEXTIME?",
+    "createAccount": "Crea un account"
+  }
+}

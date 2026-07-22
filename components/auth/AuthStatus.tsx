@@ -1,4 +1,4 @@
-import type { AuthActionState } from "@/app/auth/state";
+import type { AuthActionState } from "@/app/[locale]/auth/state";
 
 export default function AuthStatus({ state }: { state: AuthActionState }) {
   if (!state.message) return null;

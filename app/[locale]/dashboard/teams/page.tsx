@@ -1,0 +1,1 @@
+import type{Metadata}from"next";import{getTeamWorkspace,TeamsOverview}from"@/src/features/teams";export const metadata:Metadata={title:"Teams"};export default async function TeamsPage(){const workspace=await getTeamWorkspace();return <TeamsOverview teams={workspace.teams} permissions={workspace.permissions}/>}

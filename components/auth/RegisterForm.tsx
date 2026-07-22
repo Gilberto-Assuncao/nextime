@@ -2,8 +2,8 @@
 
 import { useActionState } from "react";
 import Link from "next/link";
-import { registerAction } from "@/app/auth/actions";
-import { initialAuthState } from "@/app/auth/state";
+import { registerAction } from "@/app/[locale]/auth/actions";
+import { initialAuthState } from "@/app/[locale]/auth/state";
 import AuthCard from "./AuthCard";
 import AuthDivider from "./AuthDivider";
 import AuthInput from "./AuthInput";

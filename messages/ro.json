@@ -1,0 +1,30 @@
+{
+  "nav": {
+    "dashboard": "Panou",
+    "workforce": "Forța de muncă",
+    "time": "Pontaj",
+    "timesheets": "Fișe de pontaj",
+    "projects": "Proiecte",
+    "sites": "Șantiere",
+    "map": "Hartă live",
+    "teams": "Echipe",
+    "companies": "Companii",
+    "connect": "NEXTIME Connect",
+    "reports": "Rapoarte",
+    "finance": "Finanțe",
+    "marketplace": "Piață",
+    "settings": "Setări"
+  },
+  "login": {
+    "title": "Bine ai revenit",
+    "description": "Conectează-te pentru a-ți gestiona timpul, proiectele și echipele.",
+    "email": "E-mail",
+    "password": "Parolă",
+    "rememberMe": "Ține-mă minte",
+    "forgotPassword": "Ai uitat parola?",
+    "signIn": "Conectare",
+    "signingIn": "Se conectează…",
+    "newToNextime": "Ești nou pe NEXTIME?",
+    "createAccount": "Creează un cont"
+  }
+}

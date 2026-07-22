@@ -1,0 +1,30 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "workforce": "Personeel",
+    "time": "Tijdregistratie",
+    "timesheets": "Urenstaten",
+    "projects": "Projecten",
+    "sites": "Werven",
+    "map": "Live kaart",
+    "teams": "Teams",
+    "companies": "Bedrijven",
+    "connect": "NEXTIME Connect",
+    "reports": "Rapporten",
+    "finance": "Financiën",
+    "marketplace": "Marktplaats",
+    "settings": "Instellingen"
+  },
+  "login": {
+    "title": "Welkom terug",
+    "description": "Meld u aan om uw tijd, projecten en teams te beheren.",
+    "email": "E-mail",
+    "password": "Wachtwoord",
+    "rememberMe": "Onthoud mij",
+    "forgotPassword": "Wachtwoord vergeten?",
+    "signIn": "Inloggen",
+    "signingIn": "Bezig met inloggen…",
+    "newToNextime": "Nieuw bij NEXTIME?",
+    "createAccount": "Account aanmaken"
+  }
+}

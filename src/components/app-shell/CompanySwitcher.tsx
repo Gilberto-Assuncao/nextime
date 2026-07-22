@@ -1,7 +1,7 @@
 "use client";
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { switchCompanyAction } from "@/app/auth/actions";
+import { switchCompanyAction } from "@/app/[locale]/auth/actions";
 import type { AppCompanyOption } from "./types";
 
 export function CompanySwitcher({ companies, value }: { companies: AppCompanyOption[]; value?: string }) {

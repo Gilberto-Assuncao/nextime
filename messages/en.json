@@ -1,0 +1,30 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "workforce": "Workforce",
+    "time": "Time Tracking",
+    "timesheets": "Timesheets",
+    "projects": "Projects",
+    "sites": "Sites",
+    "map": "Live Map",
+    "teams": "Teams",
+    "companies": "Companies",
+    "connect": "NEXTIME Connect",
+    "reports": "Reports",
+    "finance": "Finance",
+    "marketplace": "Marketplace",
+    "settings": "Settings"
+  },
+  "login": {
+    "title": "Welcome back",
+    "description": "Sign in to manage your time, projects, and teams.",
+    "email": "Email",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "signIn": "Sign In",
+    "signingIn": "Signing in…",
+    "newToNextime": "New to NEXTIME?",
+    "createAccount": "Create account"
+  }
+}
