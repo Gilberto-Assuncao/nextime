@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl";
+
 export function formatTimer(totalSeconds: number) {
   const hours = Math.floor(totalSeconds / 3600);
   const minutes = Math.floor((totalSeconds % 3600) / 60);
@@ -6,11 +8,12 @@ export function formatTimer(totalSeconds: number) {
 }
 
 export default function TimerDisplay({ seconds }: { seconds: number }) {
+  const t = useTranslations("time");
   const value = formatTimer(seconds);
   return (
     <div className="text-center">
-      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#9CA3AF]">Elapsed time</p>
-      <output aria-live="off" aria-label={`Elapsed time ${value}`} className="mt-3 block font-mono text-4xl font-bold tabular-nums tracking-tight text-[#E5E7EB] min-[360px]:text-5xl sm:text-6xl">
+      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#9CA3AF]">{t("elapsedTime")}</p>
+      <output aria-live="off" aria-label={`${t("elapsedTime")} ${value}`} className="mt-3 block font-mono text-4xl font-bold tabular-nums tracking-tight text-[#E5E7EB] min-[360px]:text-5xl sm:text-6xl">
         {value}
       </output>
     </div>
