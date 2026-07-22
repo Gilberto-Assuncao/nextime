@@ -47,6 +47,8 @@ export function validateSettingsForm(formData: FormData): { data?: CompanySettin
     defaultLanguage: value(formData, "defaultLanguage", 5).toLowerCase(), timezone: value(formData, "timezone", 64),
     currencyCode: value(formData, "currencyCode", 3).toUpperCase(), dateFormat: value(formData, "dateFormat", 16),
     timeFormat: value(formData, "timeFormat", 3), weekStartsOn: value(formData, "weekStartsOn", 1), status: value(formData, "status", 16) as ManagedCompanyStatus,
+    expectedStartTime: value(formData, "expectedStartTime", 5), expectedEndTime: value(formData, "expectedEndTime", 5),
+    graceMinutes: value(formData, "graceMinutes", 4), punctualityRemindersEnabled: formData.get("punctualityRemindersEnabled") === "on",
   };
   const fieldErrors: CompanyActionState["fieldErrors"] = {};
   if (!languages.includes(data.defaultLanguage)) fieldErrors.defaultLanguage = "Select a supported language.";
@@ -56,5 +58,9 @@ export function validateSettingsForm(formData: FormData): { data?: CompanySettin
   if (!["12h", "24h"].includes(data.timeFormat)) fieldErrors.timeFormat = "Select a supported time format.";
   if (!["0", "1", "6"].includes(data.weekStartsOn)) fieldErrors.weekStartsOn = "Select a supported first day.";
   if (!statuses.includes(data.status)) fieldErrors.status = "Select a valid company status.";
+  if (data.expectedStartTime && !/^\d{2}:\d{2}$/.test(data.expectedStartTime)) fieldErrors.expectedStartTime = "Use HH:MM format.";
+  if (data.expectedEndTime && !/^\d{2}:\d{2}$/.test(data.expectedEndTime)) fieldErrors.expectedEndTime = "Use HH:MM format.";
+  if (!/^\d{1,3}$/.test(data.graceMinutes) || Number(data.graceMinutes) > 180) fieldErrors.graceMinutes = "Enter a grace period between 0 and 180 minutes.";
+  if (data.punctualityRemindersEnabled && (!data.expectedStartTime)) fieldErrors.expectedStartTime = "Set an expected start time to enable reminders.";
   return Object.keys(fieldErrors).length ? { error: { status: "error", message: "Review the highlighted fields.", fieldErrors } } : { data };
 }

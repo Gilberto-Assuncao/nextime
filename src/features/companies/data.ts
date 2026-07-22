@@ -39,7 +39,7 @@ export async function getCompanyDetail(companyId?: string): Promise<CompanyDetai
     supabase.from("teams").select("id", { count: "exact", head: true }).eq("company_id", targetId).not("leader_membership_id", "is", null),
     supabase.from("team_memberships").select("id", { count: "exact", head: true }).eq("company_id", targetId).is("left_at", null),
     supabase.from("projects").select("id", { count: "exact", head: true }).eq("company_id", targetId).eq("status", "active"),
-    supabase.from("company_settings").select("week_starts_on,date_format,time_format").eq("company_id", targetId).maybeSingle(),
+    supabase.from("company_settings").select("week_starts_on,date_format,time_format,expected_start_time,expected_end_time,grace_minutes,punctuality_reminders_enabled").eq("company_id", targetId).maybeSingle(),
   ]);
   if (error || !row) return null;
   const company = row as CompanyRow;
@@ -55,7 +55,9 @@ export async function getCompanyDetail(companyId?: string): Promise<CompanyDetai
     permissions: permissions(membership.roles),
     settings: { defaultLanguage: company.default_language, timezone: company.timezone, currencyCode: company.currency,
       dateFormat: settings.data?.date_format ?? "DD/MM/YYYY", timeFormat: settings.data?.time_format ?? "24h",
-      weekStartsOn: String(settings.data?.week_starts_on ?? 1), status: company.status },
+      weekStartsOn: String(settings.data?.week_starts_on ?? 1), status: company.status,
+      expectedStartTime: settings.data?.expected_start_time?.slice(0, 5) ?? "", expectedEndTime: settings.data?.expected_end_time?.slice(0, 5) ?? "",
+      graceMinutes: String(settings.data?.grace_minutes ?? 15), punctualityRemindersEnabled: settings.data?.punctuality_reminders_enabled ?? false },
     memberCounts: { total: memberRows.length, active: memberRows.filter(({ status }) => status === "active").length,
       invited: memberRows.filter(({ status }) => status === "invited").length, suspended: memberRows.filter(({ status }) => status === "suspended").length },
     teamCounts: { total: teamRows.length, active: teamRows.filter(({ status }) => status === "active").length,

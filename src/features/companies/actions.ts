@@ -6,8 +6,14 @@ import { revalidatePath } from "next/cache";
 import { ACTIVE_COMPANY_COOKIE } from "@/src/application/session/types";
 import { requireAuthenticatedSession } from "@/src/application/session/server";
 import { createClient } from "@/src/infrastructure/supabase/server";
+import { lookupVat } from "@/src/infrastructure/vies/client";
 import { validateCompanyForm, validateSettingsForm } from "./validation";
 import type { CompanyActionState } from "./types";
+
+export async function lookupVatAction(countryCode: string, vatNumber: string) {
+  await requireAuthenticatedSession();
+  return lookupVat(countryCode, vatNumber);
+}
 
 async function authorize(companyId: string, roles: string[]) {
   const session = await requireAuthenticatedSession();
@@ -67,7 +73,11 @@ export async function updateCompanySettingsAction(companyId: string, _: CompanyA
   const supabase = await createClient();
   const [companyResult, settingsResult] = await Promise.all([
     supabase.from("companies").update({ default_language: data.defaultLanguage, timezone: data.timezone, currency: data.currencyCode, status: data.status }).eq("id", companyId),
-    supabase.from("company_settings").upsert({ company_id: companyId, week_starts_on: Number(data.weekStartsOn), date_format: data.dateFormat, time_format: data.timeFormat }),
+    supabase.from("company_settings").upsert({
+      company_id: companyId, week_starts_on: Number(data.weekStartsOn), date_format: data.dateFormat, time_format: data.timeFormat,
+      expected_start_time: data.expectedStartTime || null, expected_end_time: data.expectedEndTime || null,
+      grace_minutes: Number(data.graceMinutes), punctuality_reminders_enabled: data.punctualityRemindersEnabled,
+    }),
   ]);
   const error = companyResult.error ?? settingsResult.error;
   if (error) return serverError(error.message);

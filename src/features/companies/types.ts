@@ -28,6 +28,10 @@ export interface CompanySettingsValues {
   timeFormat: string;
   weekStartsOn: string;
   status: ManagedCompanyStatus;
+  expectedStartTime: string;
+  expectedEndTime: string;
+  graceMinutes: string;
+  punctualityRemindersEnabled: boolean;
 }
 
 export interface CompanySummary {

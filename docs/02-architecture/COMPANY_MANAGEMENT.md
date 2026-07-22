@@ -1,6 +1,6 @@
 # NEXTIME --- COMPANY MANAGEMENT
 
-Version: 1.2 Status: Completed (Sprint 3.8); VAT autofill via VIES Planned Last Updated: 2026-07-21
+Version: 1.3 Status: Completed (Sprint 3.8); VAT autofill via VIES Completed (Sprint 6.8) Last Updated: 2026-07-22
 
 Company Management extends the existing `public.companies` tenant root. It does not introduce another company table, membership model, Company Switcher, or active-company context.
 
@@ -41,16 +41,16 @@ Supported states are active, inactive, suspended, and archived. Operational stat
 
 Future branches must model an explicit hierarchy or relationship instead of duplicating tenants. Billing, payroll, GPS, geofencing, weather, accounting, and fiscal validation remain isolated future modules and must not weaken this tenant boundary.
 
-## Planned: VAT-based company autofill (VIES) — decision pending, prepared for implementation
+## VAT-based company autofill (VIES) — implemented
 
-**Status: Planned, not implemented.** Registered 2026-07-21 after evaluating whether company creation could autofill from the Belgian BCE/KBO public register.
+**Status: Completed, Sprint 6.8 (2026-07-22).** Registered 2026-07-21 after evaluating whether company creation could autofill from the Belgian BCE/KBO public register.
 
-**Decision:** do not scrape `kbopub.economie.fgov.be` — it is a human-facing page, not an API, with no stability guarantee and likely against its terms of use. Use **VIES** (VAT Information Exchange System, European Commission) instead: the standard, free, official route EU B2B SaaS products use to validate a VAT number and retrieve the registered name/address. It also generalizes to any EU country, not just Belgium, consistent with the multi-country vision already registered in `01-product/PRODUCT_VISION.md`.
+**Decision (unchanged from the original note):** do not scrape `kbopub.economie.fgov.be` — it is a human-facing page, not an API, with no stability guarantee and likely against its terms of use. Use **VIES** (VAT Information Exchange System, European Commission) instead: the standard, free, official route EU B2B SaaS products use to validate a VAT number and retrieve the registered name/address. It also generalizes to any EU country, not just Belgium, consistent with the multi-country vision already registered in `01-product/PRODUCT_VISION.md`. Confirmed live and browser-verified against the real BELNEX ENERGY VAT number (`BE1038194067`).
 
-**Where it fits (when built):**
-1. New field/step in the company creation form: user types a VAT number (e.g. `BE0123456789`).
-2. A Server Action calls the VIES endpoint server-side (never from the browser — avoids CORS issues and keeps the call auditable). The exact current endpoint/request shape (VIES has moved from SOAP to a REST API over the years) must be re-confirmed against EU documentation at implementation time rather than assumed from this note; conceptually it takes `{ countryCode, vatNumber }` and returns `{ valid, name, address }` (or an equivalent request-date/consultation-number payload for the newer REST API).
-3. On a valid response, prefill (not silently overwrite) `legal_name`/`display_name`, `vat_number`, and the address fields already present on `companies` (`address_line_1/2`, `postal_code`, `region`, `country_code`) — the user still confirms/submits through the existing `public.create_company` RPC, which keeps all current validation and tenant-creation guarantees unchanged.
-4. `registration_number` (BCE/KBO) is a separate identifier from VAT and VIES does not return it — if BCE-specific data (NACE activities, legal situation) is wanted later, that is a distinct, larger integration (KBO Open Data bulk extract, not a live per-number lookup) and should not be conflated with the VIES VAT lookup.
+**What's built:**
+1. `src/infrastructure/vies/client.ts` — server-only `lookupVat(countryCode, vatNumber)` calling the confirmed-live REST endpoint `https://ec.europa.eu/taxation_customs/vies/rest-api/ms/{countryCode}/vat/{vatNumber}` (no SOAP, no auth, no rate-limit signup). Parses the multi-line `address` field into `addressLine1`/`postalCode`/`city`.
+2. `lookupVatAction` (`src/features/companies/actions.ts`) — authenticated Server Action wrapping the client (call happens server-side, never from the browser).
+3. `CompanyDetailsForm` — a "Look up VIES" button next to the VAT field prefills `legalName`, `city`, and (on the edit form, where those fields are visible) `addressLine1`/`postalCode`. The user still reviews and submits normally through the existing `create_company` RPC / `updateCompanyAction` — nothing is silently overwritten or auto-submitted.
+4. Unreachable/invalid VIES responses degrade to manual entry with an inline error message, per the "not decided yet" question in the original note — resolved in favor of not blocking the form.
 
-**Not decided yet:** whether to fail the form if VIES is unreachable (degrade to manual entry, most likely) or block submission — that is a UX call for whoever implements this.
+**Still separate, not built:** `registration_number` (BCE/KBO) is a distinct identifier from VAT and VIES does not return it — BCE-specific data (NACE activities, legal situation) would need the KBO Open Data bulk extract, a separate, larger integration not conflated with this VAT lookup.
