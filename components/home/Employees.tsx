@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const benefits = [
   "Registos rápidos e uma visão clara de cada dia de trabalho",
   "Organização pessoal sem folhas de cálculo ou processos complicados",
@@ -36,7 +38,7 @@ export default function Employees() {
               </li>
             ))}
           </ul>
-          <a href="/register" className="mt-8 inline-flex rounded-lg border border-primary px-6 py-3 font-semibold text-primary transition-colors hover:bg-primary hover:text-background-deep">Start Free</a>
+          <Link href="/register" className="mt-8 inline-flex rounded-lg border border-primary px-6 py-3 font-semibold text-primary transition-colors hover:bg-primary hover:text-background-deep">Start Free</Link>
         </div>
       </div>
     </section>

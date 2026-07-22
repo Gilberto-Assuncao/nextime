@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Companies from "@/components/home/Companies";
 import Employees from "@/components/home/Employees";
@@ -27,12 +28,12 @@ export default function Home() {
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <a
+            <Link
               href="/register"
               className="inline-flex justify-center rounded-lg bg-primary px-6 py-3 font-semibold text-background-deep hover:bg-primary-hover"
             >
               Começar gratuitamente
-            </a>
+            </Link>
             <a
               href="#"
               className="inline-flex justify-center rounded-lg border border-border px-6 py-3 font-semibold text-foreground hover:bg-surface"

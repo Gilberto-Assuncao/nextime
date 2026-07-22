@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function FinalCTA() {
   return (
     <section className="px-5 py-20 sm:px-8 sm:py-28">
@@ -23,12 +25,12 @@ export default function FinalCTA() {
             built for productive days and smarter decisions.
           </p>
           <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-            <a
+            <Link
               href="/register"
               className="inline-flex justify-center rounded-lg bg-primary px-6 py-3 font-semibold text-background-deep transition-colors hover:bg-primary-hover"
             >
               Start Free
-            </a>
+            </Link>
             <a
               href="#companies"
               className="inline-flex justify-center rounded-lg border border-border bg-background-deep/60 px-6 py-3 font-semibold text-foreground transition-colors hover:border-primary/50 hover:bg-background-deep"

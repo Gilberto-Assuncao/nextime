@@ -35,7 +35,7 @@ export default function AcceptInviteForm() {
         history.replaceState(null, "", window.location.pathname);
       });
     } else {
-      setReady(true);
+      queueMicrotask(() => setReady(true));
     }
   }, []);
 
