@@ -1,0 +1,46 @@
+import "server-only";
+
+import { createClient } from "@/src/infrastructure/supabase/server";
+import { requireActiveCompany } from "@/src/application/session/server";
+import { openMeteoProvider } from "@/src/infrastructure/weather/open-meteo";
+import { evaluateAlert, type WeatherAlert } from "./alerts";
+import type { ForecastDay } from "@/src/infrastructure/weather/types";
+
+export type SiteWeather = {
+  id: string;
+  name: string;
+  city: string | null;
+  forecast: (ForecastDay & { alert: WeatherAlert })[] | null;
+  error: string | null;
+};
+
+interface SiteRow { id: string; name: string; latitude: number | null; longitude: number | null; address: { city?: string } | null }
+
+const FORECAST_DAYS = 7;
+
+export async function getSiteWeatherOverview(): Promise<SiteWeather[]> {
+  const { companyId } = await requireActiveCompany();
+  const supabase = await createClient();
+
+  const { data: rows, error } = await supabase
+    .from("sites")
+    .select("id,name,latitude,longitude,address")
+    .eq("company_id", companyId)
+    .order("name");
+  if (error) throw new Error("Unable to load sites.");
+
+  const sites = (rows ?? []) as SiteRow[];
+
+  return Promise.all(sites.map(async (site): Promise<SiteWeather> => {
+    const city = site.address?.city ?? null;
+    if (site.latitude == null || site.longitude == null) {
+      return { id: site.id, name: site.name, city, forecast: null, error: "No coordinates set for this site yet." };
+    }
+    try {
+      const days = await openMeteoProvider.fetchForecast(site.latitude, site.longitude, FORECAST_DAYS);
+      return { id: site.id, name: site.name, city, forecast: days.map((day) => ({ ...day, alert: evaluateAlert(day) })), error: null };
+    } catch {
+      return { id: site.id, name: site.name, city, forecast: null, error: "Forecast temporarily unavailable." };
+    }
+  }));
+}
