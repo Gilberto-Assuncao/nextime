@@ -1,1 +1,0 @@
-export default function CompaniesLoading(){return <div role="status" aria-label="Loading companies" className="animate-pulse space-y-6"><div className="h-20 rounded-2xl bg-white/5"/><div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">{[1,2,3].map(item=><div key={item} className="h-48 rounded-2xl bg-white/5"/>)}</div></div>;}
