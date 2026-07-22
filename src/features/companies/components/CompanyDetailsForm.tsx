@@ -60,7 +60,10 @@ export function CompanyDetailsForm({ companyId, values = empty, canEdit = true }
       <PhoneInput name="phone" label="Phone" defaultValue={values.phone} error={error("phone")}/>
       <Input name="website" type="url" label="Website" defaultValue={values.website} error={error("website")} placeholder="https://"/>
       <Input name="city" label="City" value={city} onChange={(event) => setCity(event.target.value)}/>
-      {companyId ? <><Input name="addressLine1" label="Address line 1" value={addressLine1} onChange={(event) => setAddressLine1(event.target.value)}/><Input name="addressLine2" label="Address line 2" defaultValue={values.addressLine2}/><Input name="postalCode" label="Postal code" value={postalCode} onChange={(event) => setPostalCode(event.target.value)}/><Input name="region" label="Region" defaultValue={values.region}/></> : <><input type="hidden" name="addressLine1" value={addressLine1}/><input type="hidden" name="postalCode" value={postalCode}/></>}
+      <Input name="addressLine1" label="Address line 1" value={addressLine1} onChange={(event) => setAddressLine1(event.target.value)}/>
+      <Input name="addressLine2" label="Address line 2" defaultValue={values.addressLine2}/>
+      <Input name="postalCode" label="Postal code" value={postalCode} onChange={(event) => setPostalCode(event.target.value)}/>
+      <Input name="region" label="Region" defaultValue={values.region}/>
     </fieldset>
     <CompanyFormStatus state={state}/>
     {canEdit ? <div className="flex justify-end"><CompanySubmitButton label={companyId ? "Save company" : "Create company"} pendingLabel={companyId ? "Saving…" : "Creating…"}/></div> : <p className="text-sm text-[#9CA3AF]">Your role provides read-only access.</p>}
