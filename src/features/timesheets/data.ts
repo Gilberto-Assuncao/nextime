@@ -88,7 +88,7 @@ export async function getTimesheetWorkspace(): Promise<{ timesheet: Timesheet; e
       const project = first(row.projects);
       const task = first(row.tasks);
       return {
-        id: row.id, employee: employeeName, date: formatEntryDate(row.starts_at),
+        id: row.id, timesheetId: sheet.id, employee: employeeName, date: formatEntryDate(row.starts_at),
         project: project?.name ?? "", task: task?.name ?? "",
         startTime: formatTime(row.starts_at), endTime: formatTime(row.ends_at),
         breakMinutes: row.break_minutes, workedMinutes: workedMinutes(row),
