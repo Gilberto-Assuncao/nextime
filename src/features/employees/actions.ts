@@ -46,7 +46,17 @@ export async function inviteEmployeeAction(_: InviteEmployeeState, formData: For
     if (existingMembership) return { status: "error", message: "This person is already part of your company." };
     await admin.from("users").update({ first_name: firstName, last_name: lastName, phone: phone || null }).eq("id", userId);
   } else {
-    const { data: invited, error: inviteError } = await admin.auth.admin.inviteUserByEmail(email, { data: { full_name: `${firstName} ${lastName}` } });
+    const appUrl = process.env.APP_URL ?? "http://localhost:3000";
+    const { data: invited, error: inviteError } = await admin.auth.admin.inviteUserByEmail(email, {
+      data: { full_name: `${firstName} ${lastName}` },
+      // Admin-generated links (invite/magic-link/recovery) can't use PKCE —
+      // that requires the same browser to both start and finish the flow,
+      // which is impossible when the link is emailed to someone else's
+      // browser. GoTrue instead delivers tokens in the URL fragment, which
+      // only client-side JS can read, so this must NOT route through the
+      // server-side /auth/callback (?code=) handler.
+      redirectTo: `${appUrl}/accept-invite`,
+    });
     if (inviteError || !invited.user) return { status: "error", message: inviteError?.message ?? "Unable to send the invitation." };
     userId = invited.user.id;
     await admin.from("users").update({ first_name: firstName, last_name: lastName, phone: phone || null }).eq("id", userId);
@@ -54,7 +64,7 @@ export async function inviteEmployeeAction(_: InviteEmployeeState, formData: For
 
   const { data: membership, error: membershipError } = await admin
     .from("company_memberships")
-    .insert({ company_id: companyId, user_id: userId, job_title: jobTitle, status: "invited" })
+    .insert({ company_id: companyId, user_id: userId, job_title: jobTitle, status: "invited", pending_team_id: teamRow.id })
     .select("id")
     .single();
   if (membershipError || !membership) return { status: "error", message: membershipError?.message ?? "Unable to create the membership." };
@@ -68,12 +78,59 @@ export async function inviteEmployeeAction(_: InviteEmployeeState, formData: For
   });
   if (recordError) return { status: "error", message: recordError.message };
 
-  // Team assignment is intentionally deferred: validate_team_operational_membership
-  // (202607190006_team_management.sql) requires the membership to already be
-  // 'active' before it can join a team, so an invited-but-not-yet-accepted
-  // member can't be linked to teamRow.id yet. Wire this once an "accept
-  // invitation" flow exists to flip the membership to active.
+  // Team assignment happens once the invite is accepted (acceptInviteAction
+  // below) — validate_team_operational_membership requires the membership to
+  // already be 'active' before it can join a team, so it's stored on
+  // pending_team_id above and applied later, not here.
 
   revalidatePath("/dashboard/employees");
   redirect("/dashboard/employees");
+}
+
+export type AcceptInviteState = { status: "idle" | "error" | "success"; message: string };
+
+export async function acceptInviteAction(_: AcceptInviteState, formData: FormData): Promise<AcceptInviteState> {
+  const password = String(formData.get("password") ?? "");
+  const accessToken = String(formData.get("accessToken") ?? "");
+  if (password.length < 8) return { status: "error", message: "Password must be at least 8 characters." };
+  if (!accessToken) return { status: "error", message: "Your invite link has expired. Ask for a new one." };
+
+  // Invite links deliver the session via a URL fragment (#access_token=...)
+  // that only the browser can read, and @supabase/ssr's cookie sync doesn't
+  // reliably pick up a session recovered that way (confirmed by testing: the
+  // server kept seeing whoever was already logged in in that browser, not
+  // the invitee — once nearly overwriting an admin's own password). The
+  // client passes the token explicitly instead, verified here directly
+  // against GoTrue rather than trusted from cookies.
+  const admin = createAdminClient();
+  const { data: tokenUser, error: tokenError } = await admin.auth.getUser(accessToken);
+  if (tokenError || !tokenUser.user) return { status: "error", message: "Your invite link has expired. Ask for a new one." };
+  const user = tokenUser.user;
+
+  const { error: passwordError } = await admin.auth.admin.updateUserById(user.id, { password });
+  if (passwordError) return { status: "error", message: passwordError.message };
+
+  const { data: memberships, error: fetchError } = await admin
+    .from("company_memberships")
+    .select("id,company_id,pending_team_id")
+    .eq("user_id", user.id)
+    .eq("status", "invited");
+  if (fetchError) return { status: "error", message: fetchError.message };
+
+  for (const membership of memberships ?? []) {
+    const { error: activateError } = await admin
+      .from("company_memberships")
+      .update({ status: "active", starts_at: new Date().toISOString(), pending_team_id: null })
+      .eq("id", membership.id);
+    if (activateError) return { status: "error", message: activateError.message };
+
+    if (membership.pending_team_id) {
+      await admin.from("team_memberships").insert({
+        company_id: membership.company_id, team_id: membership.pending_team_id,
+        company_membership_id: membership.id, team_role: "member",
+      });
+    }
+  }
+
+  return { status: "success", message: "Account activated." };
 }

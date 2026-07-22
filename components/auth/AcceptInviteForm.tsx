@@ -1,0 +1,64 @@
+"use client";
+
+import { useActionState, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { acceptInviteAction, type AcceptInviteState } from "@/src/features/employees/actions";
+import { createClient } from "@/src/infrastructure/supabase/client";
+import AuthCard from "./AuthCard";
+import AuthStatus from "./AuthStatus";
+import AuthSubmitButton from "./AuthSubmitButton";
+import PasswordInput from "./PasswordInput";
+
+const initialState: AcceptInviteState = { status: "idle", message: "" };
+
+export default function AcceptInviteForm() {
+  const [state, formAction] = useActionState(acceptInviteAction, initialState);
+  const router = useRouter();
+  const [ready, setReady] = useState(false);
+  const [accessToken, setAccessToken] = useState("");
+
+  useEffect(() => {
+    // Invite links deliver the session as a URL fragment
+    // (#access_token=...&refresh_token=...), never a query string — only the
+    // browser can read a fragment. Parsed explicitly and applied via
+    // setSession rather than relying on automatic hash detection, which in
+    // testing did not reliably override an existing session already open in
+    // the same browser (it once nearly overwrote an admin's own password).
+    const hash = new URLSearchParams(window.location.hash.slice(1));
+    const token = hash.get("access_token");
+    const refreshToken = hash.get("refresh_token");
+    if (token && refreshToken) {
+      createClient().auth.setSession({ access_token: token, refresh_token: refreshToken }).finally(() => {
+        setAccessToken(token);
+        setReady(true);
+        history.replaceState(null, "", window.location.pathname);
+      });
+    } else {
+      setReady(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (state.status === "success") router.push("/dashboard");
+  }, [state.status, router]);
+
+  if (!ready) return null;
+
+  if (!accessToken) {
+    return (
+      <AuthCard title="This link has expired" description="Ask whoever invited you to send a new one.">
+        <Link href="/login" className="inline-flex min-h-11 items-center justify-center font-semibold text-[#22C55E] hover:text-[#16A34A] focus-visible:outline-2 focus-visible:outline-[#22C55E]">Go to sign in</Link>
+      </AuthCard>
+    );
+  }
+
+  return (
+    <AuthCard action={formAction} title="Welcome to the team" description="Set a password to activate your account.">
+      <input type="hidden" name="accessToken" value={accessToken} />
+      <PasswordInput id="accept-invite-password" name="password" label="New password" autoComplete="new-password" placeholder="At least 8 characters" />
+      <AuthStatus state={state} />
+      <AuthSubmitButton pendingLabel="Activating…">Activate account</AuthSubmitButton>
+    </AuthCard>
+  );
+}
