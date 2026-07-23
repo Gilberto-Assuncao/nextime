@@ -4,6 +4,7 @@
     "workforce": "Pracownicy",
     "time": "Rejestracja czasu",
     "timesheets": "Karty czasu pracy",
+    "field-reports": "Raporty terenowe",
     "projects": "Projekty",
     "sites": "Place budowy",
     "map": "Mapa na żywo",
@@ -12,9 +13,11 @@
     "roster": "Przydział Funkcji",
     "connect": "NEXTIME Connect",
     "reports": "Raporty",
-    "finance": "Finanse",
+    "finance": "Płace i Księgowość",
     "marketplace": "Rynek",
-    "settings": "Ustawienia"
+    "settings": "Ustawienia",
+    "expenses": "Wydatki",
+    "payroll-periods": "Okresy Rozliczeniowe"
   },
   "dashboard": {
     "eyebrow": "Przegląd",
@@ -298,7 +301,14 @@
     "createAccount": "Utwórz konto"
   },
   "landing": {
-    "nav": { "features": "Funkcje", "geolocation": "Geolokalizacja", "reports": "Raporty", "pricing": "Cennik", "login": "Zaloguj się", "cta": "Zacznij za darmo" },
+    "nav": {
+      "features": "Funkcje",
+      "geolocation": "Geolokalizacja",
+      "reports": "Raporty",
+      "pricing": "Cennik",
+      "login": "Zaloguj się",
+      "cta": "Zacznij za darmo"
+    },
     "hero": {
       "badge": "Geolokalizacja w czasie rzeczywistym",
       "titleLine1": "Ewidencja czasu pracy",
@@ -309,16 +319,52 @@
       "ctaSecondary": "Zobacz demo",
       "socialProof": "używane przez zespoły terenowe w całej Belgii"
     },
-    "live": { "title": "Zespół w terenie", "timestamp": "Dziś · 14:57", "liveBadge": "NA ŻYWO", "viewAll": "Zobacz wszystkie" },
-    "status": { "present": "Obecny", "absent": "Nieobecny", "normal": "Normalny", "extra": "Nadgodziny" },
-    "days": { "mon": "Pon", "tue": "Wt", "wed": "Śr", "thu": "Czw", "fri": "Pt", "sat": "Sob", "sun": "Ndz" },
+    "live": {
+      "title": "Zespół w terenie",
+      "timestamp": "Dziś · 14:57",
+      "liveBadge": "NA ŻYWO",
+      "viewAll": "Zobacz wszystkie"
+    },
+    "status": {
+      "present": "Obecny",
+      "absent": "Nieobecny",
+      "normal": "Normalny",
+      "extra": "Nadgodziny"
+    },
+    "days": {
+      "mon": "Pon",
+      "tue": "Wt",
+      "wed": "Śr",
+      "thu": "Czw",
+      "fri": "Pt",
+      "sat": "Sob",
+      "sun": "Ndz"
+    },
     "features": {
       "eyebrow": "Funkcje",
       "title": "Wszystko, czego potrzebuje Twój zespół",
       "description": "Od rejestracji po raport — STRATON automatyzuje ewidencję czasu pracy dla zespołów każdej wielkości.",
-      "card1": { "title": "Mapa miejsc pracy", "description": "Każde miejsce pracy pojawia się na mapie, gdy tylko ktoś się tam zarejestruje, i znika z wyróżnienia po zakończeniu pracy.", "bullet1": "Aktywne i zakończone miejsca na pierwszy rzut oka", "bullet2": "Lokalizacja potwierdzana tylko przy rejestracji", "bullet3": "Najedź kursorem, aby zobaczyć, kto tam pracował" },
-      "card2": { "title": "Automatyczne raporty", "description": "Przepracowane godziny, nieobecności, nadgodziny i salda urlopowe obliczane i eksportowane automatycznie, bez ręcznej pracy.", "bullet1": "Eksport do PDF, Excel i CSV", "bullet2": "Automatyczne saldo urlopowe", "bullet3": "Integracja z listą płac" },
-      "card3": { "title": "Cyfrowa rejestracja czasu pracy", "description": "Rejestracja bezpośrednio z przeglądarki, z weryfikacją lokalizacji i działaniem nawet przy niestabilnym połączeniu.", "bullet1": "Działa offline i synchronizuje się później", "bullet2": "Konfigurowalne potwierdzenie lokalizacji", "bullet3": "Pełna historia dla każdego pracownika" }
+      "card1": {
+        "title": "Mapa miejsc pracy",
+        "description": "Każde miejsce pracy pojawia się na mapie, gdy tylko ktoś się tam zarejestruje, i znika z wyróżnienia po zakończeniu pracy.",
+        "bullet1": "Aktywne i zakończone miejsca na pierwszy rzut oka",
+        "bullet2": "Lokalizacja potwierdzana tylko przy rejestracji",
+        "bullet3": "Najedź kursorem, aby zobaczyć, kto tam pracował"
+      },
+      "card2": {
+        "title": "Automatyczne raporty",
+        "description": "Przepracowane godziny, nieobecności, nadgodziny i salda urlopowe obliczane i eksportowane automatycznie, bez ręcznej pracy.",
+        "bullet1": "Eksport do PDF, Excel i CSV",
+        "bullet2": "Automatyczne saldo urlopowe",
+        "bullet3": "Integracja z listą płac"
+      },
+      "card3": {
+        "title": "Cyfrowa rejestracja czasu pracy",
+        "description": "Rejestracja bezpośrednio z przeglądarki, z weryfikacją lokalizacji i działaniem nawet przy niestabilnym połączeniu.",
+        "bullet1": "Działa offline i synchronizuje się później",
+        "bullet2": "Konfigurowalne potwierdzenie lokalizacji",
+        "bullet3": "Pełna historia dla każdego pracownika"
+      }
     },
     "presence": {
       "eyebrow": "Czas i obecność",
@@ -340,44 +386,87 @@
       "bullet2": "Alerty o spóźnieniach i wcześniejszym wyjściu",
       "bullet3": "Automatycznie obliczane saldo urlopowe",
       "bullet4": "Zatwierdzanie nadgodzin jednym kliknięciem",
-      "kpiPresent": "Obecni", "kpiAbsent": "Nieobecni", "kpiHoursToday": "Godziny dziś", "kpiExtra": "Nadgodziny",
-      "chartTitle": "Godziny tygodniowo", "chartRange": "Ostatnie 7 dni",
-      "colEmployee": "Pracownik", "colDept": "Dział", "colEntry": "Wejście", "colExit": "Wyjście", "colExtra": "Nadgodziny", "colStatus": "Status"
+      "kpiPresent": "Obecni",
+      "kpiAbsent": "Nieobecni",
+      "kpiHoursToday": "Godziny dziś",
+      "kpiExtra": "Nadgodziny",
+      "chartTitle": "Godziny tygodniowo",
+      "chartRange": "Ostatnie 7 dni",
+      "colEmployee": "Pracownik",
+      "colDept": "Dział",
+      "colEntry": "Wejście",
+      "colExit": "Wyjście",
+      "colExtra": "Nadgodziny",
+      "colStatus": "Status"
     },
     "map": {
       "eyebrow": "Mapa miejsc pracy",
       "title": "Zobacz, gdzie odbywa się praca",
       "description": "Każde miejsce pracy pojawia się na mapie, gdy tylko ktoś się tam zarejestruje. Aktywne miejsca są wyróżnione; po zakończeniu pracy znacznik zmienia stan. Najedź kursorem na miejsce, aby zobaczyć, kto tam był.",
-      "activeState": "w toku", "finishedState": "zakończone", "whoWorkedHere": "Kto tu pracował", "activeSites": "aktywnych miejsc", "finishedSites": "zakończone"
+      "activeState": "w toku",
+      "finishedState": "zakończone",
+      "whoWorkedHere": "Kto tu pracował",
+      "activeSites": "aktywnych miejsc",
+      "finishedSites": "zakończone"
     },
     "capability": {
       "title": "Wszystko, czego potrzebuje zespół terenowy",
       "description": "Od zarządzania wieloma firmami po zgodność z RODO, w jednym panelu.",
-      "card1": { "title": "Wiele firm", "description": "Zarządzaj wieloma firmami i miejscami pracy z jednego konta." },
-      "card2": { "title": "9 języków", "description": "Każdy pracownik pracuje w swoim własnym języku, od panelu po e-mail." },
-      "card3": { "title": "Zintegrowana pogoda", "description": "Prognoza pogody i ryzyko opóźnienia dla każdego miejsca, aktualizowane co minutę." },
-      "card4": { "title": "Raporty rozbieżności", "description": "Porównuj planowane i rzeczywiste godziny według zespołu, projektu lub miejsca pracy." },
-      "card5": { "title": "Zaproszenie e-mailem", "description": "Wdrażaj nowych pracowników w kilka minut, bez tarcia." },
-      "card6": { "title": "Zgodność z RODO", "description": "Lokalizacja tylko za wyraźną zgodą każdego pracownika." }
+      "card1": {
+        "title": "Wiele firm",
+        "description": "Zarządzaj wieloma firmami i miejscami pracy z jednego konta."
+      },
+      "card2": {
+        "title": "9 języków",
+        "description": "Każdy pracownik pracuje w swoim własnym języku, od panelu po e-mail."
+      },
+      "card3": {
+        "title": "Zintegrowana pogoda",
+        "description": "Prognoza pogody i ryzyko opóźnienia dla każdego miejsca, aktualizowane co minutę."
+      },
+      "card4": {
+        "title": "Raporty rozbieżności",
+        "description": "Porównuj planowane i rzeczywiste godziny według zespołu, projektu lub miejsca pracy."
+      },
+      "card5": {
+        "title": "Zaproszenie e-mailem",
+        "description": "Wdrażaj nowych pracowników w kilka minut, bez tarcia."
+      },
+      "card6": {
+        "title": "Zgodność z RODO",
+        "description": "Lokalizacja tylko za wyraźną zgodą każdego pracownika."
+      }
     },
     "phone": {
       "badge": "Aplikacja mobilna wkrótce",
       "title": "Zarejestruj czas pracy trzema dotknięciami",
       "description": "Podgląd tego, jak aplikacja będzie działać dla osób w terenie — już dziś dostępna w przeglądarce, z tym samym procesem.",
-      "step1Label": "1. Rejestracja", "step1Site": "Plac Centralny · 14:02", "step1Button": "Zarejestruj",
-      "step2Label": "2. Potwierdzono", "step2Title": "Zarejestrowano czas pracy", "step2Description": "Lokalizacja potwierdzona",
+      "step1Label": "1. Rejestracja",
+      "step1Site": "Plac Centralny · 14:02",
+      "step1Button": "Zarejestruj",
+      "step2Label": "2. Potwierdzono",
+      "step2Title": "Zarejestrowano czas pracy",
+      "step2Description": "Lokalizacja potwierdzona",
       "step3Label": "3. Historia"
     },
     "finalCta": {
       "title": "Gotowy na precyzyjną kontrolę swoich godzin?",
       "description": "14 dni za darmo, bez karty kredytowej. Anuluj w dowolnym momencie.",
-      "ctaPrimary": "Zacznij teraz", "ctaSecondary": "Porozmawiaj ze sprzedażą"
+      "ctaPrimary": "Zacznij teraz",
+      "ctaSecondary": "Porozmawiaj ze sprzedażą"
     },
     "footer": {
       "tagline": "Cyfrowa ewidencja czasu pracy z geolokalizacją i automatycznymi raportami dla zespołów terenowych.",
-      "productHeading": "Produkt", "companyHeading": "Firma",
-      "footerAbout": "O nas", "footerBlog": "Blog", "footerCareers": "Kariera", "footerContact": "Kontakt",
-      "legalHeading": "Informacje prawne", "footerPrivacy": "Prywatność", "footerTerms": "Warunki korzystania", "footerSecurity": "Bezpieczeństwo",
+      "productHeading": "Produkt",
+      "companyHeading": "Firma",
+      "footerAbout": "O nas",
+      "footerBlog": "Blog",
+      "footerCareers": "Kariera",
+      "footerContact": "Kontakt",
+      "legalHeading": "Informacje prawne",
+      "footerPrivacy": "Prywatność",
+      "footerTerms": "Warunki korzystania",
+      "footerSecurity": "Bezpieczeństwo",
       "copyright": "© {year} STRATON. Wszelkie prawa zastrzeżone."
     }
   }

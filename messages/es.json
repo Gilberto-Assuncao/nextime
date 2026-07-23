@@ -4,6 +4,7 @@
     "workforce": "Plantilla",
     "time": "Registro de horas",
     "timesheets": "Partes de horas",
+    "field-reports": "Informes de campo",
     "projects": "Proyectos",
     "sites": "Obras",
     "map": "Mapa en vivo",
@@ -12,9 +13,11 @@
     "roster": "Asignación de Funciones",
     "connect": "NEXTIME Connect",
     "reports": "Informes",
-    "finance": "Finanzas",
+    "finance": "Nómina y Contabilidad",
     "marketplace": "Mercado",
-    "settings": "Ajustes"
+    "settings": "Ajustes",
+    "expenses": "Gastos",
+    "payroll-periods": "Períodos de Nómina"
   },
   "dashboard": {
     "eyebrow": "Resumen",
@@ -298,7 +301,14 @@
     "createAccount": "Crear cuenta"
   },
   "landing": {
-    "nav": { "features": "Funciones", "geolocation": "Geolocalización", "reports": "Informes", "pricing": "Precios", "login": "Iniciar sesión", "cta": "Empezar gratis" },
+    "nav": {
+      "features": "Funciones",
+      "geolocation": "Geolocalización",
+      "reports": "Informes",
+      "pricing": "Precios",
+      "login": "Iniciar sesión",
+      "cta": "Empezar gratis"
+    },
     "hero": {
       "badge": "Geolocalización en tiempo real",
       "titleLine1": "Control horario",
@@ -309,16 +319,52 @@
       "ctaSecondary": "Ver una demo",
       "socialProof": "usado por equipos de campo en toda Bélgica"
     },
-    "live": { "title": "Equipo en campo", "timestamp": "Hoy · 14:57", "liveBadge": "EN VIVO", "viewAll": "Ver todos" },
-    "status": { "present": "Presente", "absent": "Ausente", "normal": "Normal", "extra": "Extra" },
-    "days": { "mon": "Lun", "tue": "Mar", "wed": "Mié", "thu": "Jue", "fri": "Vie", "sat": "Sáb", "sun": "Dom" },
+    "live": {
+      "title": "Equipo en campo",
+      "timestamp": "Hoy · 14:57",
+      "liveBadge": "EN VIVO",
+      "viewAll": "Ver todos"
+    },
+    "status": {
+      "present": "Presente",
+      "absent": "Ausente",
+      "normal": "Normal",
+      "extra": "Extra"
+    },
+    "days": {
+      "mon": "Lun",
+      "tue": "Mar",
+      "wed": "Mié",
+      "thu": "Jue",
+      "fri": "Vie",
+      "sat": "Sáb",
+      "sun": "Dom"
+    },
     "features": {
       "eyebrow": "Funciones",
       "title": "Todo lo que tu equipo necesita",
       "description": "Desde el fichaje hasta el informe, STRATON automatiza el control horario para equipos de cualquier tamaño.",
-      "card1": { "title": "Mapa de lugares de trabajo", "description": "Cada lugar de trabajo aparece en el mapa en cuanto alguien ficha allí, y deja de estar destacado cuando el trabajo termina.", "bullet1": "Lugares activos y finalizados de un vistazo", "bullet2": "Ubicación confirmada solo al fichar", "bullet3": "Pasa el ratón para ver quién trabajó allí" },
-      "card2": { "title": "Informes automáticos", "description": "Horas trabajadas, ausencias, horas extra y bolsa de horas calculadas y exportadas automáticamente, sin esfuerzo manual.", "bullet1": "Exportación a PDF, Excel y CSV", "bullet2": "Bolsa de horas automática", "bullet3": "Integración con nómina" },
-      "card3": { "title": "Fichaje digital", "description": "Fichaje directamente desde el navegador, con verificación de ubicación y funcionamiento incluso con conexión inestable.", "bullet1": "Funciona sin conexión y sincroniza después", "bullet2": "Confirmación por ubicación configurable", "bullet3": "Historial completo por empleado" }
+      "card1": {
+        "title": "Mapa de lugares de trabajo",
+        "description": "Cada lugar de trabajo aparece en el mapa en cuanto alguien ficha allí, y deja de estar destacado cuando el trabajo termina.",
+        "bullet1": "Lugares activos y finalizados de un vistazo",
+        "bullet2": "Ubicación confirmada solo al fichar",
+        "bullet3": "Pasa el ratón para ver quién trabajó allí"
+      },
+      "card2": {
+        "title": "Informes automáticos",
+        "description": "Horas trabajadas, ausencias, horas extra y bolsa de horas calculadas y exportadas automáticamente, sin esfuerzo manual.",
+        "bullet1": "Exportación a PDF, Excel y CSV",
+        "bullet2": "Bolsa de horas automática",
+        "bullet3": "Integración con nómina"
+      },
+      "card3": {
+        "title": "Fichaje digital",
+        "description": "Fichaje directamente desde el navegador, con verificación de ubicación y funcionamiento incluso con conexión inestable.",
+        "bullet1": "Funciona sin conexión y sincroniza después",
+        "bullet2": "Confirmación por ubicación configurable",
+        "bullet3": "Historial completo por empleado"
+      }
     },
     "presence": {
       "eyebrow": "Fichaje y Presencia",
@@ -340,44 +386,87 @@
       "bullet2": "Alertas de retraso y salida anticipada",
       "bullet3": "Bolsa de horas calculada automáticamente",
       "bullet4": "Aprobación de horas extra con un clic",
-      "kpiPresent": "Presentes", "kpiAbsent": "Ausentes", "kpiHoursToday": "Horas hoy", "kpiExtra": "Horas extra",
-      "chartTitle": "Horas semanales", "chartRange": "Últimos 7 días",
-      "colEmployee": "Empleado", "colDept": "Departamento", "colEntry": "Entrada", "colExit": "Salida", "colExtra": "Extra", "colStatus": "Estado"
+      "kpiPresent": "Presentes",
+      "kpiAbsent": "Ausentes",
+      "kpiHoursToday": "Horas hoy",
+      "kpiExtra": "Horas extra",
+      "chartTitle": "Horas semanales",
+      "chartRange": "Últimos 7 días",
+      "colEmployee": "Empleado",
+      "colDept": "Departamento",
+      "colEntry": "Entrada",
+      "colExit": "Salida",
+      "colExtra": "Extra",
+      "colStatus": "Estado"
     },
     "map": {
       "eyebrow": "Mapa de lugares de trabajo",
       "title": "Ve dónde está ocurriendo el trabajo",
       "description": "Cada lugar de trabajo aparece en el mapa en cuanto alguien ficha allí. Los lugares activos se destacan; al finalizar, el marcador cambia de estado. Pasa el ratón sobre un lugar para ver quién estuvo allí.",
-      "activeState": "en curso", "finishedState": "finalizado", "whoWorkedHere": "Quién trabajó aquí", "activeSites": "lugares activos", "finishedSites": "finalizado"
+      "activeState": "en curso",
+      "finishedState": "finalizado",
+      "whoWorkedHere": "Quién trabajó aquí",
+      "activeSites": "lugares activos",
+      "finishedSites": "finalizado"
     },
     "capability": {
       "title": "Todo lo que necesita un equipo de campo",
       "description": "Desde la gestión multiempresa hasta el cumplimiento del RGPD, en un único panel.",
-      "card1": { "title": "Multiempresa", "description": "Gestiona varias empresas y lugares de trabajo desde una sola cuenta." },
-      "card2": { "title": "9 idiomas", "description": "Cada empleado trabaja en su propio idioma, del panel al correo electrónico." },
-      "card3": { "title": "Meteorología integrada", "description": "Previsión del tiempo y riesgo de retraso por lugar, actualizados cada minuto." },
-      "card4": { "title": "Informes de desviación", "description": "Compara horas planificadas y reales por equipo, proyecto o lugar de trabajo." },
-      "card5": { "title": "Invitación por correo", "description": "Incorpora nuevos empleados en minutos, sin fricción." },
-      "card6": { "title": "Cumplimiento del RGPD", "description": "Ubicación solo con el consentimiento explícito de cada empleado." }
+      "card1": {
+        "title": "Multiempresa",
+        "description": "Gestiona varias empresas y lugares de trabajo desde una sola cuenta."
+      },
+      "card2": {
+        "title": "9 idiomas",
+        "description": "Cada empleado trabaja en su propio idioma, del panel al correo electrónico."
+      },
+      "card3": {
+        "title": "Meteorología integrada",
+        "description": "Previsión del tiempo y riesgo de retraso por lugar, actualizados cada minuto."
+      },
+      "card4": {
+        "title": "Informes de desviación",
+        "description": "Compara horas planificadas y reales por equipo, proyecto o lugar de trabajo."
+      },
+      "card5": {
+        "title": "Invitación por correo",
+        "description": "Incorpora nuevos empleados en minutos, sin fricción."
+      },
+      "card6": {
+        "title": "Cumplimiento del RGPD",
+        "description": "Ubicación solo con el consentimiento explícito de cada empleado."
+      }
     },
     "phone": {
       "badge": "Aplicación móvil próximamente",
       "title": "Ficha en tres toques",
       "description": "Un adelanto de cómo funcionará la aplicación para quienes están en el campo — disponible ya hoy desde el navegador, con el mismo flujo.",
-      "step1Label": "1. Fichar", "step1Site": "Obra Central · 14:02", "step1Button": "Fichar",
-      "step2Label": "2. Confirmado", "step2Title": "Fichaje registrado", "step2Description": "Ubicación confirmada",
+      "step1Label": "1. Fichar",
+      "step1Site": "Obra Central · 14:02",
+      "step1Button": "Fichar",
+      "step2Label": "2. Confirmado",
+      "step2Title": "Fichaje registrado",
+      "step2Description": "Ubicación confirmada",
       "step3Label": "3. Historial"
     },
     "finalCta": {
       "title": "¿Listo para controlar tus horas con precisión?",
       "description": "14 días gratis, sin tarjeta de crédito. Cancela cuando quieras.",
-      "ctaPrimary": "Empezar ahora", "ctaSecondary": "Hablar con ventas"
+      "ctaPrimary": "Empezar ahora",
+      "ctaSecondary": "Hablar con ventas"
     },
     "footer": {
       "tagline": "Fichaje digital con geolocalización e informes automáticos para equipos de campo.",
-      "productHeading": "Producto", "companyHeading": "Empresa",
-      "footerAbout": "Sobre nosotros", "footerBlog": "Blog", "footerCareers": "Empleo", "footerContact": "Contacto",
-      "legalHeading": "Legal", "footerPrivacy": "Privacidad", "footerTerms": "Términos de uso", "footerSecurity": "Seguridad",
+      "productHeading": "Producto",
+      "companyHeading": "Empresa",
+      "footerAbout": "Sobre nosotros",
+      "footerBlog": "Blog",
+      "footerCareers": "Empleo",
+      "footerContact": "Contacto",
+      "legalHeading": "Legal",
+      "footerPrivacy": "Privacidad",
+      "footerTerms": "Términos de uso",
+      "footerSecurity": "Seguridad",
       "copyright": "© {year} STRATON. Todos los derechos reservados."
     }
   }

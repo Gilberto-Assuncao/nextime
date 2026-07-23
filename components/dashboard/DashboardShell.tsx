@@ -5,11 +5,19 @@ import { defaultAppNavigation } from "@/src/components/app-shell/config";
 import { requireAuthenticatedSession } from "@/src/application/session/server";
 import { SessionProvider } from "@/src/application/session/session-provider";
 import { getNotifications } from "@/src/features/notifications/data";
+import { getPendingApprovalsCount } from "@/src/features/dashboard/data";
 
 export default async function DashboardShell({ children }: { children: ReactNode }) {
-  const [session, notifications] = await Promise.all([requireAuthenticatedSession(), getNotifications()]);
+  const [session, notifications, pendingApprovals] = await Promise.all([requireAuthenticatedSession(), getNotifications(), getPendingApprovalsCount()]);
   const t = await getTranslations("nav");
-  const navigation = defaultAppNavigation.map((item) => ({ ...item, label: t(item.id as Parameters<typeof t>[0]) }));
+  const roles = session.activeCompany?.roles ?? [];
+  const navigation = defaultAppNavigation
+    .filter((item) => !item.roles || item.roles.some((role) => roles.includes(role)))
+    .map((item) => ({
+      ...item,
+      label: t(item.id as Parameters<typeof t>[0]),
+      badge: item.badge === "approvals" ? (pendingApprovals > 0 ? String(pendingApprovals) : undefined) : item.badge,
+    }));
   return (
     <SessionProvider value={session}>
       <AppShell navigation={navigation} breadcrumbs={[{ label: t("dashboard"), href: "/dashboard" }]} companies={session.companies.filter(({ status }) => status !== "archived").map(({ id, name }) => ({ id, name }))} currentCompany={session.activeCompany?.id} user={session.user} notifications={notifications}>

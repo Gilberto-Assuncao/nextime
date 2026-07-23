@@ -4,6 +4,7 @@
     "workforce": "Workforce",
     "time": "Time Tracking",
     "timesheets": "Timesheets",
+    "field-reports": "Field Reports",
     "projects": "Projects",
     "sites": "Sites",
     "map": "Live Map",
@@ -12,9 +13,11 @@
     "roster": "Roster",
     "connect": "NEXTIME Connect",
     "reports": "Reports",
-    "finance": "Finance",
+    "finance": "Payroll & Accounting",
     "marketplace": "Marketplace",
-    "settings": "Settings"
+    "settings": "Settings",
+    "expenses": "Expenses",
+    "payroll-periods": "Payroll Periods"
   },
   "dashboard": {
     "eyebrow": "Overview",
@@ -409,12 +412,30 @@
     "capability": {
       "title": "Everything a field team needs",
       "description": "From multi-company management to GDPR compliance, in a single panel.",
-      "card1": { "title": "Multi-company", "description": "Manage multiple companies and work sites from a single account." },
-      "card2": { "title": "9 languages", "description": "Every employee works in their own language, from the panel to email." },
-      "card3": { "title": "Integrated weather", "description": "Weather forecast and delay risk per site, updated every minute." },
-      "card4": { "title": "Variance reports", "description": "Compare planned and actual hours by team, project, or work site." },
-      "card5": { "title": "Email invitations", "description": "Onboard new employees in minutes, with no friction." },
-      "card6": { "title": "GDPR compliance", "description": "Location tracked only with each employee's explicit consent." }
+      "card1": {
+        "title": "Multi-company",
+        "description": "Manage multiple companies and work sites from a single account."
+      },
+      "card2": {
+        "title": "9 languages",
+        "description": "Every employee works in their own language, from the panel to email."
+      },
+      "card3": {
+        "title": "Integrated weather",
+        "description": "Weather forecast and delay risk per site, updated every minute."
+      },
+      "card4": {
+        "title": "Variance reports",
+        "description": "Compare planned and actual hours by team, project, or work site."
+      },
+      "card5": {
+        "title": "Email invitations",
+        "description": "Onboard new employees in minutes, with no friction."
+      },
+      "card6": {
+        "title": "GDPR compliance",
+        "description": "Location tracked only with each employee's explicit consent."
+      }
     },
     "phone": {
       "badge": "Mobile app coming soon",

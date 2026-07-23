@@ -4,6 +4,7 @@
     "workforce": "Forța de muncă",
     "time": "Pontaj",
     "timesheets": "Fișe de pontaj",
+    "field-reports": "Rapoarte de teren",
     "projects": "Proiecte",
     "sites": "Șantiere",
     "map": "Hartă live",
@@ -12,9 +13,11 @@
     "roster": "Repartizarea Funcțiilor",
     "connect": "NEXTIME Connect",
     "reports": "Rapoarte",
-    "finance": "Finanțe",
+    "finance": "Salarizare & Contabilitate",
     "marketplace": "Piață",
-    "settings": "Setări"
+    "settings": "Setări",
+    "expenses": "Cheltuieli",
+    "payroll-periods": "Perioade de Salarizare"
   },
   "dashboard": {
     "eyebrow": "Prezentare generală",
@@ -298,7 +301,14 @@
     "createAccount": "Creează un cont"
   },
   "landing": {
-    "nav": { "features": "Funcționalități", "geolocation": "Geolocalizare", "reports": "Rapoarte", "pricing": "Prețuri", "login": "Conectare", "cta": "Începe gratuit" },
+    "nav": {
+      "features": "Funcționalități",
+      "geolocation": "Geolocalizare",
+      "reports": "Rapoarte",
+      "pricing": "Prețuri",
+      "login": "Conectare",
+      "cta": "Începe gratuit"
+    },
     "hero": {
       "badge": "Geolocalizare în timp real",
       "titleLine1": "Pontaj",
@@ -309,16 +319,52 @@
       "ctaSecondary": "Vezi o demonstrație",
       "socialProof": "folosit de echipe din teren din toată Belgia"
     },
-    "live": { "title": "Echipă în teren", "timestamp": "Astăzi · 14:57", "liveBadge": "LIVE", "viewAll": "Vezi toate" },
-    "status": { "present": "Prezent", "absent": "Absent", "normal": "Normal", "extra": "Suplimentar" },
-    "days": { "mon": "Lun", "tue": "Mar", "wed": "Mie", "thu": "Joi", "fri": "Vin", "sat": "Sâm", "sun": "Dum" },
+    "live": {
+      "title": "Echipă în teren",
+      "timestamp": "Astăzi · 14:57",
+      "liveBadge": "LIVE",
+      "viewAll": "Vezi toate"
+    },
+    "status": {
+      "present": "Prezent",
+      "absent": "Absent",
+      "normal": "Normal",
+      "extra": "Suplimentar"
+    },
+    "days": {
+      "mon": "Lun",
+      "tue": "Mar",
+      "wed": "Mie",
+      "thu": "Joi",
+      "fri": "Vin",
+      "sat": "Sâm",
+      "sun": "Dum"
+    },
     "features": {
       "eyebrow": "Funcționalități",
       "title": "Tot ce are nevoie echipa ta",
       "description": "De la pontaj la raport, STRATON automatizează pontajul pentru echipe de orice dimensiune.",
-      "card1": { "title": "Harta șantierelor", "description": "Fiecare șantier apare pe hartă imediat ce cineva pontează acolo și iese din prim-plan odată ce lucrarea este finalizată.", "bullet1": "Șantiere active și finalizate dintr-o privire", "bullet2": "Locația confirmată doar la pontaj", "bullet3": "Treci cu mouse-ul pentru a vedea cine a lucrat acolo" },
-      "card2": { "title": "Rapoarte automate", "description": "Ore lucrate, absențe, ore suplimentare și sold de ore calculate și exportate automat, fără efort manual.", "bullet1": "Export în PDF, Excel și CSV", "bullet2": "Sold de ore automat", "bullet3": "Integrare cu salarizarea" },
-      "card3": { "title": "Pontaj digital", "description": "Pontaj direct din browser, cu verificarea locației și funcționare chiar și cu o conexiune instabilă.", "bullet1": "Funcționează offline și se sincronizează ulterior", "bullet2": "Confirmare prin locație configurabilă", "bullet3": "Istoric complet pentru fiecare angajat" }
+      "card1": {
+        "title": "Harta șantierelor",
+        "description": "Fiecare șantier apare pe hartă imediat ce cineva pontează acolo și iese din prim-plan odată ce lucrarea este finalizată.",
+        "bullet1": "Șantiere active și finalizate dintr-o privire",
+        "bullet2": "Locația confirmată doar la pontaj",
+        "bullet3": "Treci cu mouse-ul pentru a vedea cine a lucrat acolo"
+      },
+      "card2": {
+        "title": "Rapoarte automate",
+        "description": "Ore lucrate, absențe, ore suplimentare și sold de ore calculate și exportate automat, fără efort manual.",
+        "bullet1": "Export în PDF, Excel și CSV",
+        "bullet2": "Sold de ore automat",
+        "bullet3": "Integrare cu salarizarea"
+      },
+      "card3": {
+        "title": "Pontaj digital",
+        "description": "Pontaj direct din browser, cu verificarea locației și funcționare chiar și cu o conexiune instabilă.",
+        "bullet1": "Funcționează offline și se sincronizează ulterior",
+        "bullet2": "Confirmare prin locație configurabilă",
+        "bullet3": "Istoric complet pentru fiecare angajat"
+      }
     },
     "presence": {
       "eyebrow": "Pontaj & Prezență",
@@ -340,44 +386,87 @@
       "bullet2": "Alerte de întârziere și plecare anticipată",
       "bullet3": "Sold de ore calculat automat",
       "bullet4": "Aprobarea orelor suplimentare dintr-un click",
-      "kpiPresent": "Prezenți", "kpiAbsent": "Absenți", "kpiHoursToday": "Ore azi", "kpiExtra": "Ore suplimentare",
-      "chartTitle": "Ore săptămânale", "chartRange": "Ultimele 7 zile",
-      "colEmployee": "Angajat", "colDept": "Departament", "colEntry": "Intrare", "colExit": "Ieșire", "colExtra": "Suplimentar", "colStatus": "Stare"
+      "kpiPresent": "Prezenți",
+      "kpiAbsent": "Absenți",
+      "kpiHoursToday": "Ore azi",
+      "kpiExtra": "Ore suplimentare",
+      "chartTitle": "Ore săptămânale",
+      "chartRange": "Ultimele 7 zile",
+      "colEmployee": "Angajat",
+      "colDept": "Departament",
+      "colEntry": "Intrare",
+      "colExit": "Ieșire",
+      "colExtra": "Suplimentar",
+      "colStatus": "Stare"
     },
     "map": {
       "eyebrow": "Harta șantierelor",
       "title": "Vezi unde se desfășoară lucrul",
       "description": "Fiecare șantier apare pe hartă imediat ce cineva pontează acolo. Șantierele active sunt evidențiate; odată finalizate, marcajul își schimbă starea. Treci cu mouse-ul peste un șantier pentru a vedea cine a fost acolo.",
-      "activeState": "în desfășurare", "finishedState": "finalizat", "whoWorkedHere": "Cine a lucrat aici", "activeSites": "șantiere active", "finishedSites": "finalizat"
+      "activeState": "în desfășurare",
+      "finishedState": "finalizat",
+      "whoWorkedHere": "Cine a lucrat aici",
+      "activeSites": "șantiere active",
+      "finishedSites": "finalizat"
     },
     "capability": {
       "title": "Tot ce are nevoie o echipă din teren",
       "description": "De la gestionarea mai multor companii la conformitatea GDPR, într-un singur panou.",
-      "card1": { "title": "Multi-companie", "description": "Gestionează mai multe companii și șantiere dintr-un singur cont." },
-      "card2": { "title": "9 limbi", "description": "Fiecare angajat lucrează în propria limbă, de la panou până la e-mail." },
-      "card3": { "title": "Vreme integrată", "description": "Prognoza meteo și riscul de întârziere pe șantier, actualizate în fiecare minut." },
-      "card4": { "title": "Rapoarte de divergență", "description": "Compară orele planificate și cele reale pe echipă, proiect sau șantier." },
-      "card5": { "title": "Invitație prin e-mail", "description": "Integrează angajați noi în câteva minute, fără fricțiuni." },
-      "card6": { "title": "Conformitate GDPR", "description": "Locația este urmărită doar cu consimțământul explicit al fiecărui angajat." }
+      "card1": {
+        "title": "Multi-companie",
+        "description": "Gestionează mai multe companii și șantiere dintr-un singur cont."
+      },
+      "card2": {
+        "title": "9 limbi",
+        "description": "Fiecare angajat lucrează în propria limbă, de la panou până la e-mail."
+      },
+      "card3": {
+        "title": "Vreme integrată",
+        "description": "Prognoza meteo și riscul de întârziere pe șantier, actualizate în fiecare minut."
+      },
+      "card4": {
+        "title": "Rapoarte de divergență",
+        "description": "Compară orele planificate și cele reale pe echipă, proiect sau șantier."
+      },
+      "card5": {
+        "title": "Invitație prin e-mail",
+        "description": "Integrează angajați noi în câteva minute, fără fricțiuni."
+      },
+      "card6": {
+        "title": "Conformitate GDPR",
+        "description": "Locația este urmărită doar cu consimțământul explicit al fiecărui angajat."
+      }
     },
     "phone": {
       "badge": "Aplicație mobilă în curând",
       "title": "Pontează din trei atingeri",
       "description": "O previzualizare a modului în care va funcționa aplicația pentru cei din teren — disponibilă deja astăzi din browser, cu același flux.",
-      "step1Label": "1. Pontare", "step1Site": "Șantier Central · 14:02", "step1Button": "Pontează",
-      "step2Label": "2. Confirmat", "step2Title": "Pontaj înregistrat", "step2Description": "Locație confirmată",
+      "step1Label": "1. Pontare",
+      "step1Site": "Șantier Central · 14:02",
+      "step1Button": "Pontează",
+      "step2Label": "2. Confirmat",
+      "step2Title": "Pontaj înregistrat",
+      "step2Description": "Locație confirmată",
       "step3Label": "3. Istoric"
     },
     "finalCta": {
       "title": "Gata să îți controlezi orele cu precizie?",
       "description": "14 zile gratuite, fără card de credit. Anulează oricând.",
-      "ctaPrimary": "Începe acum", "ctaSecondary": "Discută cu vânzările"
+      "ctaPrimary": "Începe acum",
+      "ctaSecondary": "Discută cu vânzările"
     },
     "footer": {
       "tagline": "Pontaj digital cu geolocalizare și rapoarte automate pentru echipele din teren.",
-      "productHeading": "Produs", "companyHeading": "Companie",
-      "footerAbout": "Despre noi", "footerBlog": "Blog", "footerCareers": "Cariere", "footerContact": "Contact",
-      "legalHeading": "Legal", "footerPrivacy": "Confidențialitate", "footerTerms": "Termeni de utilizare", "footerSecurity": "Securitate",
+      "productHeading": "Produs",
+      "companyHeading": "Companie",
+      "footerAbout": "Despre noi",
+      "footerBlog": "Blog",
+      "footerCareers": "Cariere",
+      "footerContact": "Contact",
+      "legalHeading": "Legal",
+      "footerPrivacy": "Confidențialitate",
+      "footerTerms": "Termeni de utilizare",
+      "footerSecurity": "Securitate",
       "copyright": "© {year} STRATON. Toate drepturile rezervate."
     }
   }

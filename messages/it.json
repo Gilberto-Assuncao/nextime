@@ -4,6 +4,7 @@
     "workforce": "Personale",
     "time": "Rilevazione ore",
     "timesheets": "Fogli ore",
+    "field-reports": "Rapporti sul campo",
     "projects": "Progetti",
     "sites": "Cantieri",
     "map": "Mappa live",
@@ -12,9 +13,11 @@
     "roster": "Assegnazione Funzioni",
     "connect": "NEXTIME Connect",
     "reports": "Report",
-    "finance": "Finanza",
+    "finance": "Paghe & Contabilità",
     "marketplace": "Marketplace",
-    "settings": "Impostazioni"
+    "settings": "Impostazioni",
+    "expenses": "Spese",
+    "payroll-periods": "Periodi Paga"
   },
   "dashboard": {
     "eyebrow": "Panoramica",
@@ -298,7 +301,14 @@
     "createAccount": "Crea un account"
   },
   "landing": {
-    "nav": { "features": "Funzionalità", "geolocation": "Geolocalizzazione", "reports": "Report", "pricing": "Prezzi", "login": "Accedi", "cta": "Inizia gratis" },
+    "nav": {
+      "features": "Funzionalità",
+      "geolocation": "Geolocalizzazione",
+      "reports": "Report",
+      "pricing": "Prezzi",
+      "login": "Accedi",
+      "cta": "Inizia gratis"
+    },
     "hero": {
       "badge": "Geolocalizzazione in tempo reale",
       "titleLine1": "Rilevazione presenze",
@@ -309,16 +319,52 @@
       "ctaSecondary": "Guarda una demo",
       "socialProof": "usato da team sul campo in tutto il Belgio"
     },
-    "live": { "title": "Team sul campo", "timestamp": "Oggi · 14:57", "liveBadge": "IN DIRETTA", "viewAll": "Vedi tutti" },
-    "status": { "present": "Presente", "absent": "Assente", "normal": "Normale", "extra": "Straordinario" },
-    "days": { "mon": "Lun", "tue": "Mar", "wed": "Mer", "thu": "Gio", "fri": "Ven", "sat": "Sab", "sun": "Dom" },
+    "live": {
+      "title": "Team sul campo",
+      "timestamp": "Oggi · 14:57",
+      "liveBadge": "IN DIRETTA",
+      "viewAll": "Vedi tutti"
+    },
+    "status": {
+      "present": "Presente",
+      "absent": "Assente",
+      "normal": "Normale",
+      "extra": "Straordinario"
+    },
+    "days": {
+      "mon": "Lun",
+      "tue": "Mar",
+      "wed": "Mer",
+      "thu": "Gio",
+      "fri": "Ven",
+      "sat": "Sab",
+      "sun": "Dom"
+    },
     "features": {
       "eyebrow": "Funzionalità",
       "title": "Tutto ciò di cui il tuo team ha bisogno",
       "description": "Dalla timbratura al report, STRATON automatizza la rilevazione presenze per team di qualsiasi dimensione.",
-      "card1": { "title": "Mappa dei cantieri", "description": "Ogni cantiere appare sulla mappa non appena qualcuno vi timbra, e non è più in evidenza una volta terminato il lavoro.", "bullet1": "Cantieri attivi e conclusi a colpo d'occhio", "bullet2": "Posizione confermata solo alla timbratura", "bullet3": "Passa il mouse per vedere chi ha lavorato lì" },
-      "card2": { "title": "Report automatici", "description": "Ore lavorate, assenze, straordinari e banca ore calcolati ed esportati automaticamente, senza sforzo manuale.", "bullet1": "Esportazione in PDF, Excel e CSV", "bullet2": "Banca ore automatica", "bullet3": "Integrazione con le buste paga" },
-      "card3": { "title": "Timbratura digitale", "description": "Timbratura direttamente dal browser, con verifica della posizione e funzionamento anche con connessione instabile.", "bullet1": "Funziona offline e si sincronizza dopo", "bullet2": "Conferma della posizione configurabile", "bullet3": "Cronologia completa per dipendente" }
+      "card1": {
+        "title": "Mappa dei cantieri",
+        "description": "Ogni cantiere appare sulla mappa non appena qualcuno vi timbra, e non è più in evidenza una volta terminato il lavoro.",
+        "bullet1": "Cantieri attivi e conclusi a colpo d'occhio",
+        "bullet2": "Posizione confermata solo alla timbratura",
+        "bullet3": "Passa il mouse per vedere chi ha lavorato lì"
+      },
+      "card2": {
+        "title": "Report automatici",
+        "description": "Ore lavorate, assenze, straordinari e banca ore calcolati ed esportati automaticamente, senza sforzo manuale.",
+        "bullet1": "Esportazione in PDF, Excel e CSV",
+        "bullet2": "Banca ore automatica",
+        "bullet3": "Integrazione con le buste paga"
+      },
+      "card3": {
+        "title": "Timbratura digitale",
+        "description": "Timbratura direttamente dal browser, con verifica della posizione e funzionamento anche con connessione instabile.",
+        "bullet1": "Funziona offline e si sincronizza dopo",
+        "bullet2": "Conferma della posizione configurabile",
+        "bullet3": "Cronologia completa per dipendente"
+      }
     },
     "presence": {
       "eyebrow": "Presenze & Timbratura",
@@ -340,44 +386,87 @@
       "bullet2": "Avvisi di ritardo e uscita anticipata",
       "bullet3": "Banca ore calcolata automaticamente",
       "bullet4": "Approvazione degli straordinari con un clic",
-      "kpiPresent": "Presenti", "kpiAbsent": "Assenti", "kpiHoursToday": "Ore oggi", "kpiExtra": "Straordinari",
-      "chartTitle": "Ore settimanali", "chartRange": "Ultimi 7 giorni",
-      "colEmployee": "Dipendente", "colDept": "Reparto", "colEntry": "Entrata", "colExit": "Uscita", "colExtra": "Straordinario", "colStatus": "Stato"
+      "kpiPresent": "Presenti",
+      "kpiAbsent": "Assenti",
+      "kpiHoursToday": "Ore oggi",
+      "kpiExtra": "Straordinari",
+      "chartTitle": "Ore settimanali",
+      "chartRange": "Ultimi 7 giorni",
+      "colEmployee": "Dipendente",
+      "colDept": "Reparto",
+      "colEntry": "Entrata",
+      "colExit": "Uscita",
+      "colExtra": "Straordinario",
+      "colStatus": "Stato"
     },
     "map": {
       "eyebrow": "Mappa dei cantieri",
       "title": "Guarda dove si sta svolgendo il lavoro",
       "description": "Ogni cantiere appare sulla mappa non appena qualcuno vi timbra. I cantieri attivi sono in evidenza; una volta terminato il lavoro, il marcatore cambia stato. Passa il mouse su un cantiere per vedere chi c'era.",
-      "activeState": "in corso", "finishedState": "concluso", "whoWorkedHere": "Chi ha lavorato qui", "activeSites": "cantieri attivi", "finishedSites": "concluso"
+      "activeState": "in corso",
+      "finishedState": "concluso",
+      "whoWorkedHere": "Chi ha lavorato qui",
+      "activeSites": "cantieri attivi",
+      "finishedSites": "concluso"
     },
     "capability": {
       "title": "Tutto ciò di cui ha bisogno un team sul campo",
       "description": "Dalla gestione multi-azienda alla conformità GDPR, in un unico pannello.",
-      "card1": { "title": "Multi-azienda", "description": "Gestisci più aziende e cantieri da un unico account." },
-      "card2": { "title": "9 lingue", "description": "Ogni dipendente lavora nella propria lingua, dal pannello all'email." },
-      "card3": { "title": "Meteo integrato", "description": "Previsioni meteo e rischio di ritardo per cantiere, aggiornati ogni minuto." },
-      "card4": { "title": "Report di scostamento", "description": "Confronta ore pianificate ed effettive per team, progetto o cantiere." },
-      "card5": { "title": "Invito via email", "description": "Inserisci nuovi dipendenti in pochi minuti, senza attriti." },
-      "card6": { "title": "Conformità GDPR", "description": "Posizione tracciata solo con il consenso esplicito di ciascun dipendente." }
+      "card1": {
+        "title": "Multi-azienda",
+        "description": "Gestisci più aziende e cantieri da un unico account."
+      },
+      "card2": {
+        "title": "9 lingue",
+        "description": "Ogni dipendente lavora nella propria lingua, dal pannello all'email."
+      },
+      "card3": {
+        "title": "Meteo integrato",
+        "description": "Previsioni meteo e rischio di ritardo per cantiere, aggiornati ogni minuto."
+      },
+      "card4": {
+        "title": "Report di scostamento",
+        "description": "Confronta ore pianificate ed effettive per team, progetto o cantiere."
+      },
+      "card5": {
+        "title": "Invito via email",
+        "description": "Inserisci nuovi dipendenti in pochi minuti, senza attriti."
+      },
+      "card6": {
+        "title": "Conformità GDPR",
+        "description": "Posizione tracciata solo con il consenso esplicito di ciascun dipendente."
+      }
     },
     "phone": {
       "badge": "App mobile in arrivo",
       "title": "Timbra in tre tocchi",
       "description": "Un'anteprima di come funzionerà l'app per chi è sul campo — già disponibile oggi da browser, con lo stesso flusso.",
-      "step1Label": "1. Timbra", "step1Site": "Cantiere Centrale · 14:02", "step1Button": "Timbra",
-      "step2Label": "2. Confermato", "step2Title": "Timbratura registrata", "step2Description": "Posizione confermata",
+      "step1Label": "1. Timbra",
+      "step1Site": "Cantiere Centrale · 14:02",
+      "step1Button": "Timbra",
+      "step2Label": "2. Confermato",
+      "step2Title": "Timbratura registrata",
+      "step2Description": "Posizione confermata",
       "step3Label": "3. Cronologia"
     },
     "finalCta": {
       "title": "Pronto a controllare le tue ore con precisione?",
       "description": "14 giorni gratis, senza carta di credito. Annulla quando vuoi.",
-      "ctaPrimary": "Inizia ora", "ctaSecondary": "Parla con le vendite"
+      "ctaPrimary": "Inizia ora",
+      "ctaSecondary": "Parla con le vendite"
     },
     "footer": {
       "tagline": "Timbratura digitale con geolocalizzazione e report automatici per i team sul campo.",
-      "productHeading": "Prodotto", "companyHeading": "Azienda",
-      "footerAbout": "Chi siamo", "footerBlog": "Blog", "footerCareers": "Carriere", "footerContact": "Contatti",
-      "legalHeading": "Legale", "footerPrivacy": "Privacy", "footerTerms": "Termini di utilizzo", "footerSecurity": "Sicurezza",
+      "productHeading": "Prodotto",
+      "companyHeading": "Azienda",
+      "footerAbout": "Chi siamo",
+      "footerBlog": "Blog",
+      "footerCareers": "Carriere",
+      "footerContact": "Contatti",
+      "legalHeading": "Legale",
+      "footerPrivacy": "Privacy",
+      "footerTerms": "Termini di utilizzo",
+      "footerSecurity": "Sicurezza",
       "copyright": "© {year} STRATON. Tutti i diritti riservati."
     }
   }
