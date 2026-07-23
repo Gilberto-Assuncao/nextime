@@ -9,6 +9,7 @@
     "map": "Mapa em tempo real",
     "teams": "Equipas",
     "companies": "Empresas",
+    "roster": "Quadro de Funções",
     "connect": "NEXTIME Connect",
     "reports": "Relatórios",
     "finance": "Finanças",
@@ -269,6 +270,21 @@
     "teamMembers": "Membros da equipa",
     "projectHoursProgress": "Progresso de horas do projeto"
   },
+  "roster": {
+    "eyebrow": "Empresa",
+    "title": "Quadro de Funções",
+    "description": "Defina qual membro ativo ocupa cada função-chave na sua empresa.",
+    "columnMember": "Membro",
+    "columnRoles": "Funções",
+    "roleManager": "Gestor",
+    "roleAccountant": "Contabilista",
+    "roleHr": "RH",
+    "roleFinance": "Financeiro",
+    "noMembers": "Ainda não há membros ativos.",
+    "updated": "Atualizado.",
+    "updateError": "Não foi possível atualizar esta função.",
+    "permissionError": "Apenas proprietários e administradores podem gerir o quadro de funções."
+  },
   "login": {
     "title": "Bem-vindo de volta",
     "description": "Inicie sessão para gerir o seu tempo, projetos e equipas.",
@@ -280,5 +296,89 @@
     "signingIn": "A iniciar sessão…",
     "newToNextime": "Novo no NEXTIME?",
     "createAccount": "Criar conta"
+  },
+  "landing": {
+    "nav": { "features": "Funcionalidades", "geolocation": "Georreferenciação", "reports": "Relatórios", "pricing": "Preços", "login": "Entrar", "cta": "Começar grátis" },
+    "hero": {
+      "badge": "Georreferenciação em tempo real",
+      "titleLine1": "Controlo de horas",
+      "titleHighlight": "a sua equipa",
+      "titleLine2": "pode confiar",
+      "description": "Registo de ponto com GPS, relatórios automáticos e banco de horas — tudo integrado para equipas de campo.",
+      "ctaPrimary": "Comece o seu teste de 14 dias",
+      "ctaSecondary": "Ver demonstração",
+      "socialProof": "utilizado por equipas de campo em toda a Bélgica"
+    },
+    "live": { "title": "Equipa em Campo", "timestamp": "Hoje · 14:57", "liveBadge": "AO VIVO", "viewAll": "Ver todos" },
+    "status": { "present": "Presente", "absent": "Ausente", "normal": "Normal", "extra": "Extra" },
+    "days": { "mon": "Seg", "tue": "Ter", "wed": "Qua", "thu": "Qui", "fri": "Sex", "sat": "Sáb", "sun": "Dom" },
+    "features": {
+      "eyebrow": "Funcionalidades",
+      "title": "Tudo o que a sua equipa precisa",
+      "description": "Do registo ao relatório, o STRATON automatiza o controlo de horas para equipas de qualquer dimensão.",
+      "card1": { "title": "Mapa de locais de trabalho", "description": "Cada local de trabalho aparece no mapa assim que alguém regista o ponto ali, e deixa de estar em destaque quando o trabalho termina.", "bullet1": "Locais ativos e concluídos num relance", "bullet2": "Localização confirmada apenas no momento do ponto", "bullet3": "Passe o rato para ver quem trabalhou lá" },
+      "card2": { "title": "Relatórios automáticos", "description": "Horas trabalhadas, faltas, horas extra e banco de horas calculados e exportados automaticamente, sem esforço manual.", "bullet1": "Exportação em PDF, Excel e CSV", "bullet2": "Banco de horas automático", "bullet3": "Integração com processamento salarial" },
+      "card3": { "title": "Ponto digital", "description": "Registo de ponto direto pelo navegador, com verificação de localização e funcionamento mesmo com ligação instável.", "bullet1": "Funciona offline e sincroniza depois", "bullet2": "Confirmação por localização configurável", "bullet3": "Histórico completo por colaborador" }
+    },
+    "presence": {
+      "eyebrow": "Ponto & Presença",
+      "title": "Ponto com GPS, sem margem para dúvidas",
+      "description": "Cada entrada e saída é registada com localização verificada. Os supervisores acompanham chegadas, atrasos e presença em tempo real, sem folhas de papel nem chamadas de confirmação.",
+      "cta": "Explorar cronometragem",
+      "timerTitle": "Cronómetro ativo",
+      "timerLive": "EM CURSO",
+      "site": "Estaleiro Norte — Bloco B",
+      "locationVerified": "Localização verificada · 50.85, 4.35",
+      "entrance": "Entrada",
+      "pause": "Pausa"
+    },
+    "dashboardMock": {
+      "eyebrow": "Dashboard",
+      "title": "Visibilidade total da equipa num único painel",
+      "description": "Acompanhe presença, horas e localização em tempo real. Identifique ausências e horas extra com alertas automáticos.",
+      "bullet1": "Painel de presenças em tempo real",
+      "bullet2": "Alertas de atraso e saída antecipada",
+      "bullet3": "Banco de horas calculado automaticamente",
+      "bullet4": "Aprovação de horas extra num clique",
+      "kpiPresent": "Presentes", "kpiAbsent": "Ausentes", "kpiHoursToday": "Horas hoje", "kpiExtra": "Horas extra",
+      "chartTitle": "Horas semanais", "chartRange": "Últimos 7 dias",
+      "colEmployee": "Colaborador", "colDept": "Departamento", "colEntry": "Entrada", "colExit": "Saída", "colExtra": "Extra", "colStatus": "Estado"
+    },
+    "map": {
+      "eyebrow": "Mapa de locais de trabalho",
+      "title": "Veja onde o trabalho está a acontecer",
+      "description": "Cada local de trabalho aparece no mapa assim que alguém regista o ponto ali. Os locais ativos ficam em destaque; ao terminar, o marcador muda de estado. Passe o rato sobre um local para ver quem esteve lá.",
+      "activeState": "em curso", "finishedState": "concluído", "whoWorkedHere": "Quem trabalhou aqui", "activeSites": "locais ativos", "finishedSites": "concluído"
+    },
+    "capability": {
+      "title": "Tudo o que uma equipa de campo precisa",
+      "description": "Da gestão multiempresa à conformidade RGPD, num único painel.",
+      "card1": { "title": "Multiempresa", "description": "Gira várias empresas e locais de trabalho a partir de uma única conta." },
+      "card2": { "title": "9 idiomas", "description": "Cada colaborador trabalha no seu próprio idioma, do painel ao email." },
+      "card3": { "title": "Meteorologia integrada", "description": "Previsão do tempo e risco de atraso por local, atualizados ao minuto." },
+      "card4": { "title": "Relatórios de divergência", "description": "Compare horas planeadas e reais por equipa, projeto ou local de trabalho." },
+      "card5": { "title": "Convite por email", "description": "Integração de novos colaboradores em minutos, sem fricção." },
+      "card6": { "title": "Conformidade RGPD", "description": "Localização apenas com consentimento explícito de cada colaborador." }
+    },
+    "phone": {
+      "badge": "Aplicação móvel brevemente",
+      "title": "Registe o ponto em três toques",
+      "description": "Uma pré-visualização de como a aplicação vai funcionar para quem está no terreno — hoje disponível pelo navegador, com o mesmo fluxo.",
+      "step1Label": "1. Registar ponto", "step1Site": "Obra Central · 14:02", "step1Button": "Registar ponto",
+      "step2Label": "2. Confirmado", "step2Title": "Ponto registado", "step2Description": "Localização confirmada",
+      "step3Label": "3. Histórico"
+    },
+    "finalCta": {
+      "title": "Pronto para controlar as suas horas com precisão?",
+      "description": "14 dias grátis, sem cartão de crédito. Cancele quando quiser.",
+      "ctaPrimary": "Começar agora", "ctaSecondary": "Falar com vendas"
+    },
+    "footer": {
+      "tagline": "Controlo de ponto digital com georreferenciação e relatórios automáticos para equipas de campo.",
+      "productHeading": "Produto", "companyHeading": "Empresa",
+      "footerAbout": "Sobre nós", "footerBlog": "Blog", "footerCareers": "Carreiras", "footerContact": "Contacto",
+      "legalHeading": "Legal", "footerPrivacy": "Privacidade", "footerTerms": "Termos de utilização", "footerSecurity": "Segurança",
+      "copyright": "© {year} STRATON. Todos os direitos reservados."
+    }
   }
 }

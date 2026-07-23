@@ -9,6 +9,7 @@
     "map": "Live Map",
     "teams": "Teams",
     "companies": "Companies",
+    "roster": "Roster",
     "connect": "NEXTIME Connect",
     "reports": "Reports",
     "finance": "Finance",
@@ -269,6 +270,21 @@
     "teamMembers": "Team members",
     "projectHoursProgress": "Project hours progress"
   },
+  "roster": {
+    "eyebrow": "Company",
+    "title": "Roster",
+    "description": "Designate which active member holds each key function in your company.",
+    "columnMember": "Member",
+    "columnRoles": "Functions",
+    "roleManager": "Manager",
+    "roleAccountant": "Accountant",
+    "roleHr": "HR",
+    "roleFinance": "Finance",
+    "noMembers": "No active members yet.",
+    "updated": "Updated.",
+    "updateError": "Unable to update this role.",
+    "permissionError": "Only owners and administrators can manage the roster."
+  },
   "login": {
     "title": "Welcome back",
     "description": "Sign in to manage your time, projects, and teams.",
@@ -280,5 +296,157 @@
     "signingIn": "Signing in…",
     "newToNextime": "New to NEXTIME?",
     "createAccount": "Create account"
+  },
+  "landing": {
+    "nav": {
+      "features": "Features",
+      "geolocation": "Geolocation",
+      "reports": "Reports",
+      "pricing": "Pricing",
+      "login": "Log in",
+      "cta": "Start for free"
+    },
+    "hero": {
+      "badge": "Real-time geolocation",
+      "titleLine1": "Time tracking",
+      "titleHighlight": "your team",
+      "titleLine2": "can trust",
+      "description": "GPS-based clock-in, automatic reports, and time-off balances — all in one platform for field teams.",
+      "ctaPrimary": "Start your 14-day trial",
+      "ctaSecondary": "See a demo",
+      "socialProof": "used by field teams across Belgium"
+    },
+    "live": {
+      "title": "Team in the Field",
+      "timestamp": "Today · 14:57",
+      "liveBadge": "LIVE",
+      "viewAll": "View all"
+    },
+    "status": {
+      "present": "Present",
+      "absent": "Absent",
+      "normal": "Normal",
+      "extra": "Extra"
+    },
+    "days": {
+      "mon": "Mon",
+      "tue": "Tue",
+      "wed": "Wed",
+      "thu": "Thu",
+      "fri": "Fri",
+      "sat": "Sat",
+      "sun": "Sun"
+    },
+    "features": {
+      "eyebrow": "Features",
+      "title": "Everything your team needs",
+      "description": "From clock-in to report, STRATON automates time tracking for teams of any size.",
+      "card1": {
+        "title": "Work-site map",
+        "description": "Each work site appears on the map as soon as someone clocks in there, and drops out of focus once the work is finished.",
+        "bullet1": "Active and finished sites at a glance",
+        "bullet2": "Location confirmed only at clock-in",
+        "bullet3": "Hover to see who worked there"
+      },
+      "card2": {
+        "title": "Automatic reports",
+        "description": "Worked hours, absences, overtime, and time-off balances calculated and exported automatically, with no manual effort.",
+        "bullet1": "Export to PDF, Excel, and CSV",
+        "bullet2": "Automatic time-off balance",
+        "bullet3": "Payroll integration"
+      },
+      "card3": {
+        "title": "Digital clock-in",
+        "description": "Clock in directly from the browser, with location verification and support for unstable connections.",
+        "bullet1": "Works offline and syncs later",
+        "bullet2": "Configurable location confirmation",
+        "bullet3": "Full history per employee"
+      }
+    },
+    "presence": {
+      "eyebrow": "Time & Attendance",
+      "title": "GPS clock-in, with no room for doubt",
+      "description": "Every clock-in and clock-out is recorded with verified location. Supervisors track arrivals, delays, and attendance in real time, with no paper sheets or confirmation calls.",
+      "cta": "Explore time tracking",
+      "timerTitle": "Active timer",
+      "timerLive": "IN PROGRESS",
+      "site": "North Yard — Block B",
+      "locationVerified": "Location verified · 50.85, 4.35",
+      "entrance": "Clock-in",
+      "pause": "Break"
+    },
+    "dashboardMock": {
+      "eyebrow": "Dashboard",
+      "title": "Full team visibility in one panel",
+      "description": "Track attendance, hours, and location in real time. Spot absences and overtime with automatic alerts.",
+      "bullet1": "Real-time attendance panel",
+      "bullet2": "Late arrival and early leave alerts",
+      "bullet3": "Automatic time-off balance",
+      "bullet4": "One-click overtime approval",
+      "kpiPresent": "Present",
+      "kpiAbsent": "Absent",
+      "kpiHoursToday": "Hours today",
+      "kpiExtra": "Overtime",
+      "chartTitle": "Weekly hours",
+      "chartRange": "Last 7 days",
+      "colEmployee": "Employee",
+      "colDept": "Department",
+      "colEntry": "Clock-in",
+      "colExit": "Clock-out",
+      "colExtra": "Overtime",
+      "colStatus": "Status"
+    },
+    "map": {
+      "eyebrow": "Work-site map",
+      "title": "See where the work is happening",
+      "description": "Each work site appears on the map as soon as someone clocks in there. Active sites are highlighted; once finished, the marker changes state. Hover over a site to see who was there.",
+      "activeState": "in progress",
+      "finishedState": "finished",
+      "whoWorkedHere": "Who worked here",
+      "activeSites": "active sites",
+      "finishedSites": "finished"
+    },
+    "capability": {
+      "title": "Everything a field team needs",
+      "description": "From multi-company management to GDPR compliance, in a single panel.",
+      "card1": { "title": "Multi-company", "description": "Manage multiple companies and work sites from a single account." },
+      "card2": { "title": "9 languages", "description": "Every employee works in their own language, from the panel to email." },
+      "card3": { "title": "Integrated weather", "description": "Weather forecast and delay risk per site, updated every minute." },
+      "card4": { "title": "Variance reports", "description": "Compare planned and actual hours by team, project, or work site." },
+      "card5": { "title": "Email invitations", "description": "Onboard new employees in minutes, with no friction." },
+      "card6": { "title": "GDPR compliance", "description": "Location tracked only with each employee's explicit consent." }
+    },
+    "phone": {
+      "badge": "Mobile app coming soon",
+      "title": "Clock in with three taps",
+      "description": "A preview of how the app will work for people in the field — available today from the browser, with the same flow.",
+      "step1Label": "1. Clock in",
+      "step1Site": "Central Site · 14:02",
+      "step1Button": "Clock in",
+      "step2Label": "2. Confirmed",
+      "step2Title": "Clock-in recorded",
+      "step2Description": "Location confirmed",
+      "step3Label": "3. History"
+    },
+    "finalCta": {
+      "title": "Ready to track your hours with precision?",
+      "description": "14-day free trial, no credit card required. Cancel anytime.",
+      "ctaPrimary": "Start now",
+      "ctaSecondary": "Talk to sales"
+    },
+    "footer": {
+      "tagline": "Digital time tracking with geolocation and automatic reports for field teams.",
+      "productHeading": "Product",
+      "companyHeading": "Company",
+      "footerAbout": "About us",
+      "footerBlog": "Blog",
+      "footerCareers": "Careers",
+      "footerContact": "Contact",
+      "legalHeading": "Legal",
+      "footerPrivacy": "Privacy",
+      "footerTerms": "Terms of use",
+      "footerSecurity": "Security",
+      "copyright": "© {year} STRATON. All rights reserved."
+    }
   }
 }

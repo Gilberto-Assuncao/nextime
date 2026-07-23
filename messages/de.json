@@ -9,6 +9,7 @@
     "map": "Live Karte",
     "teams": "Teams",
     "companies": "Unternehmen",
+    "roster": "Funktionsübersicht",
     "connect": "NEXTIME Connect",
     "reports": "Berichte",
     "finance": "Finanzen",
@@ -269,6 +270,21 @@
     "teamMembers": "Teammitglieder",
     "projectHoursProgress": "Fortschritt der Projektstunden"
   },
+  "roster": {
+    "eyebrow": "Unternehmen",
+    "title": "Funktionsübersicht",
+    "description": "Legen Sie fest, welches aktive Mitglied jede Schlüsselfunktion in Ihrem Unternehmen innehat.",
+    "columnMember": "Mitglied",
+    "columnRoles": "Funktionen",
+    "roleManager": "Manager",
+    "roleAccountant": "Buchhalter",
+    "roleHr": "HR",
+    "roleFinance": "Finanzen",
+    "noMembers": "Noch keine aktiven Mitglieder.",
+    "updated": "Aktualisiert.",
+    "updateError": "Diese Funktion konnte nicht aktualisiert werden.",
+    "permissionError": "Nur Eigentümer und Administratoren können die Funktionsübersicht verwalten."
+  },
   "login": {
     "title": "Willkommen zurück",
     "description": "Melden Sie sich an, um Ihre Zeit, Projekte und Teams zu verwalten.",
@@ -280,5 +296,89 @@
     "signingIn": "Anmeldung läuft…",
     "newToNextime": "Neu bei NEXTIME?",
     "createAccount": "Konto erstellen"
+  },
+  "landing": {
+    "nav": { "features": "Funktionen", "geolocation": "Geolokalisierung", "reports": "Berichte", "pricing": "Preise", "login": "Anmelden", "cta": "Kostenlos starten" },
+    "hero": {
+      "badge": "Geolokalisierung in Echtzeit",
+      "titleLine1": "Zeiterfassung",
+      "titleHighlight": "der Ihr Team",
+      "titleLine2": "vertrauen kann",
+      "description": "Zeiterfassung per GPS, automatische Berichte und Überstundenkonto — alles integriert für Teams im Außeneinsatz.",
+      "ctaPrimary": "Starten Sie Ihre 14-tägige Testphase",
+      "ctaSecondary": "Demo ansehen",
+      "socialProof": "genutzt von Außendienstteams in ganz Belgien"
+    },
+    "live": { "title": "Team im Einsatz", "timestamp": "Heute · 14:57", "liveBadge": "LIVE", "viewAll": "Alle anzeigen" },
+    "status": { "present": "Anwesend", "absent": "Abwesend", "normal": "Normal", "extra": "Überstunden" },
+    "days": { "mon": "Mo", "tue": "Di", "wed": "Mi", "thu": "Do", "fri": "Fr", "sat": "Sa", "sun": "So" },
+    "features": {
+      "eyebrow": "Funktionen",
+      "title": "Alles, was Ihr Team braucht",
+      "description": "Von der Zeiterfassung bis zum Bericht automatisiert STRATON die Zeiterfassung für Teams jeder Größe.",
+      "card1": { "title": "Karte der Einsatzorte", "description": "Jeder Einsatzort erscheint auf der Karte, sobald sich jemand dort einstempelt, und verliert die Hervorhebung, sobald die Arbeit abgeschlossen ist.", "bullet1": "Aktive und abgeschlossene Orte auf einen Blick", "bullet2": "Standort nur beim Einstempeln bestätigt", "bullet3": "Mit der Maus darüberfahren, um zu sehen, wer dort gearbeitet hat" },
+      "card2": { "title": "Automatische Berichte", "description": "Arbeitsstunden, Abwesenheiten, Überstunden und Überstundenkonto automatisch berechnet und exportiert, ohne manuellen Aufwand.", "bullet1": "Export als PDF, Excel und CSV", "bullet2": "Automatisches Überstundenkonto", "bullet3": "Integration mit der Lohnabrechnung" },
+      "card3": { "title": "Digitale Zeiterfassung", "description": "Direktes Einstempeln über den Browser, mit Standortprüfung und Funktion auch bei instabiler Verbindung.", "bullet1": "Funktioniert offline und synchronisiert später", "bullet2": "Konfigurierbare Standortbestätigung", "bullet3": "Vollständiger Verlauf pro Mitarbeiter" }
+    },
+    "presence": {
+      "eyebrow": "Zeit & Anwesenheit",
+      "title": "GPS-Zeiterfassung, ohne Raum für Zweifel",
+      "description": "Jede Ein- und Ausstempelung wird mit verifiziertem Standort erfasst. Vorgesetzte verfolgen Ankünfte, Verspätungen und Anwesenheit in Echtzeit, ohne Papierlisten oder Bestätigungsanrufe.",
+      "cta": "Zeiterfassung entdecken",
+      "timerTitle": "Aktiver Timer",
+      "timerLive": "LÄUFT",
+      "site": "Baustelle Nord — Block B",
+      "locationVerified": "Standort verifiziert · 50.85, 4.35",
+      "entrance": "Einstempeln",
+      "pause": "Pause"
+    },
+    "dashboardMock": {
+      "eyebrow": "Dashboard",
+      "title": "Volle Teamtransparenz in einem Panel",
+      "description": "Verfolgen Sie Anwesenheit, Stunden und Standort in Echtzeit. Erkennen Sie Abwesenheiten und Überstunden mit automatischen Warnungen.",
+      "bullet1": "Echtzeit-Anwesenheitspanel",
+      "bullet2": "Warnungen bei Verspätung und frühem Verlassen",
+      "bullet3": "Automatisch berechnetes Überstundenkonto",
+      "bullet4": "Überstunden mit einem Klick genehmigen",
+      "kpiPresent": "Anwesend", "kpiAbsent": "Abwesend", "kpiHoursToday": "Stunden heute", "kpiExtra": "Überstunden",
+      "chartTitle": "Wochenstunden", "chartRange": "Letzte 7 Tage",
+      "colEmployee": "Mitarbeiter", "colDept": "Abteilung", "colEntry": "Einstempeln", "colExit": "Ausstempeln", "colExtra": "Überstunden", "colStatus": "Status"
+    },
+    "map": {
+      "eyebrow": "Karte der Einsatzorte",
+      "title": "Sehen Sie, wo gearbeitet wird",
+      "description": "Jeder Einsatzort erscheint auf der Karte, sobald sich jemand dort einstempelt. Aktive Orte werden hervorgehoben; sobald die Arbeit abgeschlossen ist, ändert sich der Status der Markierung. Fahren Sie mit der Maus über einen Ort, um zu sehen, wer dort war.",
+      "activeState": "läuft", "finishedState": "abgeschlossen", "whoWorkedHere": "Wer hier gearbeitet hat", "activeSites": "aktive Orte", "finishedSites": "abgeschlossen"
+    },
+    "capability": {
+      "title": "Alles, was ein Außendienstteam braucht",
+      "description": "Von der Verwaltung mehrerer Unternehmen bis zur DSGVO-Konformität, in einem einzigen Panel.",
+      "card1": { "title": "Mehrere Unternehmen", "description": "Verwalten Sie mehrere Unternehmen und Einsatzorte über ein einziges Konto." },
+      "card2": { "title": "9 Sprachen", "description": "Jeder Mitarbeiter arbeitet in seiner eigenen Sprache, vom Panel bis zur E-Mail." },
+      "card3": { "title": "Integriertes Wetter", "description": "Wettervorhersage und Verspätungsrisiko pro Standort, jede Minute aktualisiert." },
+      "card4": { "title": "Abweichungsberichte", "description": "Vergleichen Sie geplante und tatsächliche Stunden nach Team, Projekt oder Einsatzort." },
+      "card5": { "title": "Einladung per E-Mail", "description": "Neue Mitarbeiter in wenigen Minuten reibungslos einbinden." },
+      "card6": { "title": "DSGVO-Konformität", "description": "Standort nur mit ausdrücklicher Zustimmung jedes Mitarbeiters." }
+    },
+    "phone": {
+      "badge": "Mobile App bald verfügbar",
+      "title": "Mit drei Fingertipps einstempeln",
+      "description": "Eine Vorschau, wie die App für Personen im Außeneinsatz funktionieren wird — heute bereits über den Browser verfügbar, mit demselben Ablauf.",
+      "step1Label": "1. Einstempeln", "step1Site": "Zentrale Baustelle · 14:02", "step1Button": "Einstempeln",
+      "step2Label": "2. Bestätigt", "step2Title": "Zeiterfassung gespeichert", "step2Description": "Standort bestätigt",
+      "step3Label": "3. Verlauf"
+    },
+    "finalCta": {
+      "title": "Bereit, Ihre Stunden präzise zu kontrollieren?",
+      "description": "14 Tage kostenlos testen, keine Kreditkarte erforderlich. Jederzeit kündbar.",
+      "ctaPrimary": "Jetzt starten", "ctaSecondary": "Vertrieb kontaktieren"
+    },
+    "footer": {
+      "tagline": "Digitale Zeiterfassung mit Geolokalisierung und automatischen Berichten für Außendienstteams.",
+      "productHeading": "Produkt", "companyHeading": "Unternehmen",
+      "footerAbout": "Über uns", "footerBlog": "Blog", "footerCareers": "Karriere", "footerContact": "Kontakt",
+      "legalHeading": "Rechtliches", "footerPrivacy": "Datenschutz", "footerTerms": "Nutzungsbedingungen", "footerSecurity": "Sicherheit",
+      "copyright": "© {year} STRATON. Alle Rechte vorbehalten."
+    }
   }
 }

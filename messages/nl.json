@@ -9,6 +9,7 @@
     "map": "Live kaart",
     "teams": "Teams",
     "companies": "Bedrijven",
+    "roster": "Functieoverzicht",
     "connect": "NEXTIME Connect",
     "reports": "Rapporten",
     "finance": "Financiën",
@@ -269,6 +270,21 @@
     "teamMembers": "Teamleden",
     "projectHoursProgress": "Voortgang projecturen"
   },
+  "roster": {
+    "eyebrow": "Bedrijf",
+    "title": "Functieoverzicht",
+    "description": "Bepaal welk actief lid elke sleutelfunctie in uw bedrijf vervult.",
+    "columnMember": "Lid",
+    "columnRoles": "Functies",
+    "roleManager": "Manager",
+    "roleAccountant": "Boekhouder",
+    "roleHr": "HR",
+    "roleFinance": "Financiën",
+    "noMembers": "Nog geen actieve leden.",
+    "updated": "Bijgewerkt.",
+    "updateError": "Kan deze functie niet bijwerken.",
+    "permissionError": "Alleen eigenaren en beheerders kunnen het functieoverzicht beheren."
+  },
   "login": {
     "title": "Welkom terug",
     "description": "Meld u aan om uw tijd, projecten en teams te beheren.",
@@ -280,5 +296,89 @@
     "signingIn": "Bezig met inloggen…",
     "newToNextime": "Nieuw bij NEXTIME?",
     "createAccount": "Account aanmaken"
+  },
+  "landing": {
+    "nav": { "features": "Functies", "geolocation": "Geolocatie", "reports": "Rapporten", "pricing": "Prijzen", "login": "Inloggen", "cta": "Gratis beginnen" },
+    "hero": {
+      "badge": "Realtime geolocatie",
+      "titleLine1": "Urenregistratie",
+      "titleHighlight": "die uw team",
+      "titleLine2": "kan vertrouwen",
+      "description": "Klokken met GPS, automatische rapporten en verlofsaldo — alles geïntegreerd voor teams in het veld.",
+      "ctaPrimary": "Start uw proefperiode van 14 dagen",
+      "ctaSecondary": "Bekijk een demo",
+      "socialProof": "gebruikt door veldteams in heel België"
+    },
+    "live": { "title": "Team in het veld", "timestamp": "Vandaag · 14:57", "liveBadge": "LIVE", "viewAll": "Alles bekijken" },
+    "status": { "present": "Aanwezig", "absent": "Afwezig", "normal": "Normaal", "extra": "Extra" },
+    "days": { "mon": "Ma", "tue": "Di", "wed": "Wo", "thu": "Do", "fri": "Vr", "sat": "Za", "sun": "Zo" },
+    "features": {
+      "eyebrow": "Functies",
+      "title": "Alles wat uw team nodig heeft",
+      "description": "Van klokken tot rapport, STRATON automatiseert urenregistratie voor teams van elke omvang.",
+      "card1": { "title": "Kaart met werklocaties", "description": "Elke werklocatie verschijnt op de kaart zodra iemand daar inklokt, en verdwijnt uit de focus zodra het werk is afgerond.", "bullet1": "Actieve en afgeronde locaties in één oogopslag", "bullet2": "Locatie alleen bevestigd bij het klokken", "bullet3": "Beweeg over een locatie om te zien wie daar werkte" },
+      "card2": { "title": "Automatische rapporten", "description": "Gewerkte uren, afwezigheden, overuren en verlofsaldo automatisch berekend en geëxporteerd, zonder handmatig werk.", "bullet1": "Export naar PDF, Excel en CSV", "bullet2": "Automatisch verlofsaldo", "bullet3": "Integratie met loonadministratie" },
+      "card3": { "title": "Digitaal klokken", "description": "Klok rechtstreeks in via de browser, met locatieverificatie en werking ook bij een onstabiele verbinding.", "bullet1": "Werkt offline en synchroniseert later", "bullet2": "Configureerbare locatiebevestiging", "bullet3": "Volledige geschiedenis per medewerker" }
+    },
+    "presence": {
+      "eyebrow": "Tijd & Aanwezigheid",
+      "title": "GPS-klokken, zonder ruimte voor twijfel",
+      "description": "Elke in- en uitklok wordt geregistreerd met geverifieerde locatie. Leidinggevenden volgen aankomsten, vertragingen en aanwezigheid in realtime, zonder papieren lijsten of bevestigingstelefoontjes.",
+      "cta": "Ontdek de tijdregistratie",
+      "timerTitle": "Actieve timer",
+      "timerLive": "BEZIG",
+      "site": "Werf Noord — Blok B",
+      "locationVerified": "Locatie geverifieerd · 50.85, 4.35",
+      "entrance": "Inklokken",
+      "pause": "Pauze"
+    },
+    "dashboardMock": {
+      "eyebrow": "Dashboard",
+      "title": "Volledig teamoverzicht in één paneel",
+      "description": "Volg aanwezigheid, uren en locatie in realtime. Spoor afwezigheden en overuren op met automatische meldingen.",
+      "bullet1": "Realtime aanwezigheidspaneel",
+      "bullet2": "Meldingen bij te laat komen en vroeg vertrek",
+      "bullet3": "Automatisch berekend verlofsaldo",
+      "bullet4": "Overuren goedkeuren met één klik",
+      "kpiPresent": "Aanwezig", "kpiAbsent": "Afwezig", "kpiHoursToday": "Uren vandaag", "kpiExtra": "Overuren",
+      "chartTitle": "Wekelijkse uren", "chartRange": "Laatste 7 dagen",
+      "colEmployee": "Medewerker", "colDept": "Afdeling", "colEntry": "Inklokken", "colExit": "Uitklokken", "colExtra": "Overuren", "colStatus": "Status"
+    },
+    "map": {
+      "eyebrow": "Kaart met werklocaties",
+      "title": "Zie waar het werk plaatsvindt",
+      "description": "Elke werklocatie verschijnt op de kaart zodra iemand daar inklokt. Actieve locaties worden uitgelicht; zodra het werk is afgerond, verandert de markering van status. Beweeg over een locatie om te zien wie daar was.",
+      "activeState": "bezig", "finishedState": "afgerond", "whoWorkedHere": "Wie werkte hier", "activeSites": "actieve locaties", "finishedSites": "afgerond"
+    },
+    "capability": {
+      "title": "Alles wat een veldteam nodig heeft",
+      "description": "Van multi-bedrijfsbeheer tot AVG-naleving, in één paneel.",
+      "card1": { "title": "Multi-bedrijf", "description": "Beheer meerdere bedrijven en werklocaties vanuit één account." },
+      "card2": { "title": "9 talen", "description": "Elke medewerker werkt in zijn eigen taal, van paneel tot e-mail." },
+      "card3": { "title": "Geïntegreerd weer", "description": "Weersvoorspelling en vertragingsrisico per locatie, elke minuut bijgewerkt." },
+      "card4": { "title": "Afwijkingsrapporten", "description": "Vergelijk geplande en werkelijke uren per team, project of werklocatie." },
+      "card5": { "title": "Uitnodiging per e-mail", "description": "Nieuwe medewerkers in enkele minuten aan boord, zonder frictie." },
+      "card6": { "title": "AVG-naleving", "description": "Locatie alleen met uitdrukkelijke toestemming van elke medewerker." }
+    },
+    "phone": {
+      "badge": "Mobiele app binnenkort beschikbaar",
+      "title": "Klok in met drie tikken",
+      "description": "Een voorproefje van hoe de app zal werken voor mensen in het veld — vandaag al beschikbaar via de browser, met dezelfde flow.",
+      "step1Label": "1. Inklokken", "step1Site": "Centrale werf · 14:02", "step1Button": "Inklokken",
+      "step2Label": "2. Bevestigd", "step2Title": "Klok geregistreerd", "step2Description": "Locatie bevestigd",
+      "step3Label": "3. Geschiedenis"
+    },
+    "finalCta": {
+      "title": "Klaar om uw uren precies te controleren?",
+      "description": "14 dagen gratis, geen creditcard nodig. Op elk moment opzegbaar.",
+      "ctaPrimary": "Nu beginnen", "ctaSecondary": "Praat met sales"
+    },
+    "footer": {
+      "tagline": "Digitale tijdregistratie met geolocatie en automatische rapporten voor veldteams.",
+      "productHeading": "Product", "companyHeading": "Bedrijf",
+      "footerAbout": "Over ons", "footerBlog": "Blog", "footerCareers": "Vacatures", "footerContact": "Contact",
+      "legalHeading": "Juridisch", "footerPrivacy": "Privacy", "footerTerms": "Gebruiksvoorwaarden", "footerSecurity": "Beveiliging",
+      "copyright": "© {year} STRATON. Alle rechten voorbehouden."
+    }
   }
 }

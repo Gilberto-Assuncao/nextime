@@ -9,6 +9,7 @@
     "map": "Carte en direct",
     "teams": "Équipes",
     "companies": "Entreprises",
+    "roster": "Répartition des Rôles",
     "connect": "NEXTIME Connect",
     "reports": "Rapports",
     "finance": "Finances",
@@ -269,6 +270,21 @@
     "teamMembers": "Membres de l’équipe",
     "projectHoursProgress": "Progression des heures du projet"
   },
+  "roster": {
+    "eyebrow": "Entreprise",
+    "title": "Répartition des Rôles",
+    "description": "Définissez quel membre actif occupe chaque fonction clé de votre entreprise.",
+    "columnMember": "Membre",
+    "columnRoles": "Fonctions",
+    "roleManager": "Gestionnaire",
+    "roleAccountant": "Comptable",
+    "roleHr": "RH",
+    "roleFinance": "Finance",
+    "noMembers": "Aucun membre actif pour l’instant.",
+    "updated": "Mis à jour.",
+    "updateError": "Impossible de mettre à jour ce rôle.",
+    "permissionError": "Seuls les propriétaires et administrateurs peuvent gérer la répartition des rôles."
+  },
   "login": {
     "title": "Content de vous revoir",
     "description": "Connectez-vous pour gérer votre temps, vos projets et vos équipes.",
@@ -280,5 +296,89 @@
     "signingIn": "Connexion en cours…",
     "newToNextime": "Nouveau sur NEXTIME ?",
     "createAccount": "Créer un compte"
+  },
+  "landing": {
+    "nav": { "features": "Fonctionnalités", "geolocation": "Géolocalisation", "reports": "Rapports", "pricing": "Tarifs", "login": "Connexion", "cta": "Commencer gratuitement" },
+    "hero": {
+      "badge": "Géolocalisation en temps réel",
+      "titleLine1": "Le suivi du temps",
+      "titleHighlight": "auquel votre équipe",
+      "titleLine2": "peut faire confiance",
+      "description": "Pointage GPS, rapports automatiques et solde d'heures — tout intégré pour les équipes de terrain.",
+      "ctaPrimary": "Démarrer votre essai de 14 jours",
+      "ctaSecondary": "Voir une démo",
+      "socialProof": "utilisé par des équipes de terrain dans toute la Belgique"
+    },
+    "live": { "title": "Équipe sur le terrain", "timestamp": "Aujourd'hui · 14:57", "liveBadge": "EN DIRECT", "viewAll": "Tout voir" },
+    "status": { "present": "Présent", "absent": "Absent", "normal": "Normal", "extra": "Supplément" },
+    "days": { "mon": "Lun", "tue": "Mar", "wed": "Mer", "thu": "Jeu", "fri": "Ven", "sat": "Sam", "sun": "Dim" },
+    "features": {
+      "eyebrow": "Fonctionnalités",
+      "title": "Tout ce dont votre équipe a besoin",
+      "description": "Du pointage au rapport, STRATON automatise le suivi du temps pour des équipes de toute taille.",
+      "card1": { "title": "Carte des chantiers", "description": "Chaque chantier apparaît sur la carte dès que quelqu'un y pointe, et sort de la mise en avant une fois le travail terminé.", "bullet1": "Chantiers actifs et terminés en un coup d'œil", "bullet2": "Localisation confirmée uniquement au pointage", "bullet3": "Survolez pour voir qui a travaillé ici" },
+      "card2": { "title": "Rapports automatiques", "description": "Heures travaillées, absences, heures supplémentaires et solde d'heures calculés et exportés automatiquement, sans effort manuel.", "bullet1": "Export en PDF, Excel et CSV", "bullet2": "Solde d'heures automatique", "bullet3": "Intégration à la paie" },
+      "card3": { "title": "Pointage numérique", "description": "Pointage directement depuis le navigateur, avec vérification de localisation et fonctionnement même en cas de connexion instable.", "bullet1": "Fonctionne hors ligne et se synchronise ensuite", "bullet2": "Confirmation par localisation configurable", "bullet3": "Historique complet par employé" }
+    },
+    "presence": {
+      "eyebrow": "Pointage & Présence",
+      "title": "Pointage GPS, sans place au doute",
+      "description": "Chaque entrée et sortie est enregistrée avec une localisation vérifiée. Les superviseurs suivent les arrivées, les retards et la présence en temps réel, sans feuilles papier ni appels de confirmation.",
+      "cta": "Explorer le suivi du temps",
+      "timerTitle": "Chronomètre actif",
+      "timerLive": "EN COURS",
+      "site": "Chantier Nord — Bloc B",
+      "locationVerified": "Localisation vérifiée · 50.85, 4.35",
+      "entrance": "Entrée",
+      "pause": "Pause"
+    },
+    "dashboardMock": {
+      "eyebrow": "Tableau de bord",
+      "title": "Visibilité totale de l'équipe dans un seul tableau de bord",
+      "description": "Suivez la présence, les heures et la localisation en temps réel. Repérez les absences et les heures supplémentaires grâce à des alertes automatiques.",
+      "bullet1": "Tableau de présence en temps réel",
+      "bullet2": "Alertes de retard et de départ anticipé",
+      "bullet3": "Solde d'heures calculé automatiquement",
+      "bullet4": "Approbation des heures supplémentaires en un clic",
+      "kpiPresent": "Présents", "kpiAbsent": "Absents", "kpiHoursToday": "Heures aujourd'hui", "kpiExtra": "Heures sup.",
+      "chartTitle": "Heures hebdomadaires", "chartRange": "7 derniers jours",
+      "colEmployee": "Employé", "colDept": "Département", "colEntry": "Entrée", "colExit": "Sortie", "colExtra": "Supplément", "colStatus": "Statut"
+    },
+    "map": {
+      "eyebrow": "Carte des chantiers",
+      "title": "Voyez où le travail se déroule",
+      "description": "Chaque chantier apparaît sur la carte dès que quelqu'un y pointe. Les chantiers actifs sont mis en avant ; une fois terminés, le marqueur change d'état. Survolez un chantier pour voir qui s'y trouvait.",
+      "activeState": "en cours", "finishedState": "terminé", "whoWorkedHere": "Qui a travaillé ici", "activeSites": "chantiers actifs", "finishedSites": "terminé"
+    },
+    "capability": {
+      "title": "Tout ce dont une équipe de terrain a besoin",
+      "description": "De la gestion multi-entreprise à la conformité RGPD, dans un seul tableau de bord.",
+      "card1": { "title": "Multi-entreprise", "description": "Gérez plusieurs entreprises et chantiers depuis un seul compte." },
+      "card2": { "title": "9 langues", "description": "Chaque employé travaille dans sa propre langue, du tableau de bord à l'e-mail." },
+      "card3": { "title": "Météo intégrée", "description": "Prévisions météo et risque de retard par site, mis à jour à la minute." },
+      "card4": { "title": "Rapports d'écart", "description": "Comparez les heures prévues et réelles par équipe, projet ou chantier." },
+      "card5": { "title": "Invitation par e-mail", "description": "Intégrez de nouveaux employés en quelques minutes, sans friction." },
+      "card6": { "title": "Conformité RGPD", "description": "Localisation uniquement avec le consentement explicite de chaque employé." }
+    },
+    "phone": {
+      "badge": "Application mobile bientôt disponible",
+      "title": "Pointez en trois gestes",
+      "description": "Un aperçu du fonctionnement de l'application pour les personnes sur le terrain — disponible dès aujourd'hui depuis le navigateur, avec le même parcours.",
+      "step1Label": "1. Pointer", "step1Site": "Chantier Central · 14:02", "step1Button": "Pointer",
+      "step2Label": "2. Confirmé", "step2Title": "Pointage enregistré", "step2Description": "Localisation confirmée",
+      "step3Label": "3. Historique"
+    },
+    "finalCta": {
+      "title": "Prêt à suivre vos heures avec précision ?",
+      "description": "Essai gratuit de 14 jours, sans carte bancaire. Annulez à tout moment.",
+      "ctaPrimary": "Commencer maintenant", "ctaSecondary": "Contacter les ventes"
+    },
+    "footer": {
+      "tagline": "Pointage numérique avec géolocalisation et rapports automatiques pour les équipes de terrain.",
+      "productHeading": "Produit", "companyHeading": "Entreprise",
+      "footerAbout": "À propos", "footerBlog": "Blog", "footerCareers": "Carrières", "footerContact": "Contact",
+      "legalHeading": "Légal", "footerPrivacy": "Confidentialité", "footerTerms": "Conditions d'utilisation", "footerSecurity": "Sécurité",
+      "copyright": "© {year} STRATON. Tous droits réservés."
+    }
   }
 }
